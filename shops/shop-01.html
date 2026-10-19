@@ -13,22 +13,34 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
-      min-height: 100%;
-      background: #F3F2EC;
+      height: 100%;
+      overflow: hidden;
     }
 
     body {
       display: flex;
       justify-content: center;
+      align-items: center;
+      background-color: #F3F2EC;
     }
 
     img {
       display: block;
       width: 100%;
-      max-width: 1080px;
-      height: auto;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    @media (min-width: 700px) {
+      img {
+        width: auto;
+        height: 100vh;
+        max-width: 100vw;
+      }
     }
   </style>
 </head>

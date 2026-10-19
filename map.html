@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCKC 2026 — Map</title>
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--red);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--red);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    main {
+      padding: 28px 5% 48px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 9vw, 64px);
+      letter-spacing: -0.07em;
+      line-height: 0.95;
+      margin: 0;
+    }
+
+    .count {
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .map {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .map img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--red);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    @media (min-width: 600px) {
+      main {
+        padding-top: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <span>CCKC®</span>
+    <span>COCA-COLA SHOP GUIDE</span>
+    <span>2026</span>
+  </header>
+
+  <main>
+    <div class="heading">
+      <h1>THE MAP.</h1>
+      <div class="count">01—10 / SINHEUNG MARKET</div>
+    </div>
+
+    <div class="map">
+      <img
+        src="sinheung-map.png"
+        alt="신흥시장 안내 지도"
+      >
+    </div>
+
+    <div class="caption">
+      <span>SINHEUNG MARKET</span>
+      <span>SEOUL, KOREA ↗</span>
+    </div>
+  </main>
+</body>
+</html>

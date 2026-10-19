@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F3F2EC">
+
   <title>01 — H5NG</title>
 
   <style>
@@ -17,23 +18,30 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html {
       margin: 0;
       min-height: 100%;
       background: var(--bg);
     }
 
     body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
       color: var(--red);
       font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 1080 × 1920 디자인 캔버스 */
+    /*
+      모바일 기준 캔버스
+      1080 × 1920 비율 유지
+      PC에서는 최대 너비 540px
+    */
     .page {
       position: relative;
-      width: min(100vw, 56.25svh);
+      width: 100%;
+      max-width: 540px;
       aspect-ratio: 1080 / 1920;
       margin: 0 auto;
       overflow: hidden;
@@ -44,8 +52,8 @@
     /* 이름표 */
     .name-label {
       position: absolute;
-      left: 10.35%;
       top: 5.5%;
+      left: 10.35%;
       margin: 0;
       padding: 0.22em 0.18em 0.28em;
       background: var(--red);
@@ -59,8 +67,8 @@
     /* 메인 타이틀 */
     .shop-name {
       position: absolute;
-      left: 9.4%;
       top: 9%;
+      left: 9.4%;
       margin: 0;
       font-size: 17.7cqw;
       font-weight: 800;
@@ -72,8 +80,8 @@
     /* 소개 문구 */
     .intro {
       position: absolute;
-      left: 9.5%;
       top: 19%;
+      left: 9.5%;
       width: 81%;
       margin: 0;
       font-size: 2.45cqw;
@@ -83,11 +91,11 @@
       word-break: keep-all;
     }
 
-    /* 매장 사진: 원본 비율 유지 */
+    /* 매장 사진 */
     .shop-photo {
       position: absolute;
-      left: 23%;
       top: 32%;
+      left: 23%;
       width: 67%;
       height: 36%;
       margin: 0;
@@ -133,17 +141,21 @@
       white-space: nowrap;
     }
 
-    /* 텍스트 선택 및 복사 가능 */
+    /* 텍스트 선택 가능 */
     .page,
     .page * {
       user-select: text;
       -webkit-user-select: text;
     }
 
-    /* PC 화면에서도 세로 비율 유지 */
+    /* PC: 콘텐츠는 가운데, 배경은 양옆으로 연장 */
     @media (min-width: 700px) {
+      body {
+        min-height: 100vh;
+      }
+
       .page {
-        width: min(56.25vw, 56.25svh, 540px);
+        width: min(100%, 540px);
       }
     }
   </style>

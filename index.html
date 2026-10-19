@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCKC 2026 — Coca-Cola Shop Guide</title>
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--red);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 5%;
+      border-bottom: 1px solid var(--red);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .hero {
+      min-height: 78vh;
+      padding: 8vh 5% 5vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+
+    h1 {
+      margin: 8vh 0;
+      font-size: clamp(64px, 15vw, 190px);
+      line-height: 0.78;
+      letter-spacing: -0.09em;
+      font-weight: 900;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .intro p {
+      max-width: 340px;
+    }
+
+    .index-link {
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 5px;
+      white-space: nowrap;
+    }
+
+    .next {
+      padding: 28px 5%;
+      border-top: 1px solid var(--red);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 18px 5%;
+      }
+
+      .hero {
+        min-height: 78vh;
+        padding-top: 10vh;
+      }
+
+      h1 {
+        font-size: clamp(62px, 17vw, 105px);
+      }
+
+      .intro {
+        align-items: start;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>CCKC®</div>
+    <div>COCA-COLA SHOP GUIDE</div>
+    <div>2026</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">SEOUL, KOREA — 2026</div>
+
+      <h1>
+        <span>COCA-</span>
+        <span>COLA</span>
+        <span>CLUB.</span>
+      </h1>
+
+      <div class="intro">
+        <p>
+          A LOCAL GUIDE TO PLACES<br>
+          SERVING COCA-COLA.<br>
+          SINHEUNG MARKET & HAEBANGCHON.
+        </p>
+
+        <a class="index-link" href="#about">
+          EXPLORE THE GUIDE ↘
+        </a>
+      </div>
+    </section>
+
+    <section class="next" id="about">
+      <span>19 PLACES · 02 NEIGHBORHOODS</span>
+      <span>INDEX COMING SOON ↗</span>
+    </section>
+  </main>
+</body>
+</html>

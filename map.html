@@ -1,33 +1,224 @@
 
-/* 숫자 핀: 세로로 길고 날렵한 모양 */
-.number-pin {
-  width: 30px;
-  height: 30px;
-  border-radius: 50% 50% 50% 0;
-  background: var(--red);
-  transform: translate(-50%, -100%) rotate(-45deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>COCA-COLA × 신흥시장</title>
 
-.number-pin span {
-  color: #FFFFFF;
-  font-size: 13px;
-  line-height: 1;
-  font-weight: 800;
-  transform: rotate(45deg);
-  font-variant-numeric: tabular-nums;
-}
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+    }
 
-/* 작은 원: 빨간색 단색 */
-.small-pin {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--red);
-  border: none;
-  box-shadow: none;
-  transform: translate(-50%, -50%);
-}
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 지도 */
+    .map-stage {
+      position: relative;
+      width: min(100vw, 46.17svh);
+      aspect-ratio: 831 / 1800;
+      flex: 0 0 auto;
+    }
+
+    .map-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+
+    /* 제목 */
+    .title {
+      position: absolute;
+      z-index: 5;
+      top: calc(env(safe-area-inset-top, 0px) + 14px);
+      left: 12px;
+      margin: 0;
+      padding: 7px 9px;
+      background: var(--bg);
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+    }
+
+    /* 핀 공통 */
+    .pin {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 방문 매장: 빨간 원 + 흰색 굵은 숫자 */
+    .number-pin {
+      z-index: 3;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      transform: translate(-50%, -50%);
+    }
+
+    /* 기타 코카콜라 취급 매장: 작은 빨간 점 */
+    .small-pin {
+      z-index: 2;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      transform: translate(-50%, -50%);
+    }
+
+    @media (min-width: 700px) {
+      .title {
+        top: 18px;
+        left: 18px;
+        font-size: 14px;
+      }
+
+      .number-pin {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      .small-pin {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <h1 class="title">COCA-COLA × 신흥시장</h1>
+
+    <div class="map-stage">
+
+      <!-- 수정한 지도 이미지 -->
+      <img
+        class="map-image"
+        src="sinheung-map.png"
+        alt="신흥시장 코카콜라 매장 지도"
+      >
+
+      <!-- 방문할 매장 01–10 -->
+      <a class="pin number-pin"
+         style="--x:40.3%; --y:53.3%;"
+         href="shops/shop-01.html"
+         aria-label="매장 01">01</a>
+
+      <a class="pin number-pin"
+         style="--x:28.9%; --y:54.0%;"
+         href="shops/shop-02.html"
+         aria-label="매장 02">02</a>
+
+      <a class="pin number-pin"
+         style="--x:49.1%; --y:68.1%;"
+         href="shops/shop-03.html"
+         aria-label="매장 03">03</a>
+
+      <a class="pin number-pin"
+         style="--x:63.2%; --y:81.6%;"
+         href="shops/shop-04.html"
+         aria-label="매장 04">04</a>
+
+      <a class="pin number-pin"
+         style="--x:57.3%; --y:68.6%;"
+         href="shops/shop-05.html"
+         aria-label="매장 05">05</a>
+
+      <a class="pin number-pin"
+         style="--x:76.9%; --y:56.7%;"
+         href="shops/shop-06.html"
+         aria-label="매장 06">06</a>
+
+      <a class="pin number-pin"
+         style="--x:78.2%; --y:46.7%;"
+         href="shops/shop-07.html"
+         aria-label="매장 07">07</a>
+
+      <a class="pin number-pin"
+         style="--x:30.6%; --y:48.2%;"
+         href="shops/shop-08.html"
+         aria-label="매장 08">08</a>
+
+      <a class="pin number-pin"
+         style="--x:48.9%; --y:43.8%;"
+         href="shops/shop-09.html"
+         aria-label="매장 09">09</a>
+
+      <a class="pin number-pin"
+         style="--x:36.9%; --y:45.7%;"
+         href="shops/shop-10.html"
+         aria-label="매장 10">10</a>
+
+      <!-- 기타 코카콜라 취급 매장: 작은 빨간 원 -->
+      <span class="pin small-pin"
+            style="--x:56.9%; --y:29.9%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:57.2%; --y:36.4%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:31.4%; --y:58.0%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:39.4%; --y:62.7%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:69.0%; --y:58.3%;"
+            aria-hidden="true"></span>
+
+    </div>
+  </div>
+</body>
+</html>

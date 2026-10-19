@@ -30,7 +30,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 1080 × 1920 기준 디자인 캔버스 */
+    /* 1080 × 1920 디자인 캔버스 */
     .page {
       position: relative;
       width: min(100vw, 56.25svh);
@@ -56,11 +56,11 @@
       letter-spacing: -0.06em;
     }
 
-    /* H5NG 타이틀 */
+    /* 메인 타이틀 */
     .shop-name {
       position: absolute;
       left: 9.4%;
-      top: 7.7%;
+      top: 8.5%;
       margin: 0;
       font-size: 17.7cqw;
       font-weight: 800;
@@ -69,11 +69,11 @@
       white-space: nowrap;
     }
 
-    /* 소개 문구: 원래 행간 유지 */
+    /* 소개 문구 */
     .intro {
       position: absolute;
       left: 9.5%;
-      top: 15.55%;
+      top: 17%;
       width: 81%;
       margin: 0;
       font-size: 2.45cqw;
@@ -83,13 +83,13 @@
       word-break: keep-all;
     }
 
-    /* 사진: 시안 기준으로 배치 */
+    /* 매장 사진: 원본 비율 유지, 잘림 없음 */
     .shop-photo {
       position: absolute;
       left: 27.8%;
-      top: 22.65%;
+      top: 27%;
       width: 62.2%;
-      height: 40.3%;
+      height: 39%;
       margin: 0;
       overflow: hidden;
     }
@@ -98,16 +98,16 @@
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
     }
 
     /* 인용문 */
     .quote {
       position: absolute;
-      top: 64.1%;
+      top: 68%;
       right: 10.1%;
-      width: 52%;
+      width: 60%;
       margin: 0;
       font-size: 5.2cqw;
       font-weight: 800;
@@ -120,7 +120,7 @@
     /* 하단 매장 정보 */
     .footer-label {
       position: absolute;
-      top: 80.1%;
+      top: 86%;
       left: 10.2%;
       display: flex;
       align-items: baseline;
@@ -133,14 +133,14 @@
       white-space: nowrap;
     }
 
-    /* 글자 선택 및 복사 */
+    /* 텍스트 선택 및 복사 가능 */
     .page,
     .page * {
       user-select: text;
       -webkit-user-select: text;
     }
 
-    /* PC: 동일한 디자인 비율로 축소 */
+    /* PC 화면에서도 비율 유지 */
     @media (min-width: 700px) {
       .page {
         width: min(56.25vw, 56.25svh, 540px);
@@ -163,7 +163,7 @@
     </p>
 
     <figure class="shop-photo">
-      <img src="01.png" alt="H5NG 홍석우 사장">
+      <img src="01.png" alt="H5NG 매장 사진">
     </figure>
 
     <p class="quote">

@@ -3,8 +3,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CCKC 2026 — Coca-Cola Shop Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCKC 2026 — Map</title>
 
   <style>
     :root {
@@ -16,10 +16,6 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       background: var(--bg);
@@ -28,88 +24,66 @@
     }
 
     header {
+      padding: 20px 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 5%;
       border-bottom: 1px solid var(--red);
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.08em;
     }
 
-    .hero {
-      min-height: 78vh;
-      padding: 8vh 5% 5vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    main {
+      padding: 28px 5% 48px;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-    }
-
-    h1 {
-      margin: 8vh 0;
-      font-size: clamp(64px, 15vw, 190px);
-      line-height: 0.78;
-      letter-spacing: -0.09em;
-      font-weight: 900;
-    }
-
-    h1 span {
-      display: block;
-    }
-
-    .intro {
+    .heading {
       display: flex;
       justify-content: space-between;
       align-items: end;
-      gap: 24px;
-      font-size: 14px;
-      line-height: 1.6;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    .intro p {
-      max-width: 340px;
+    h1 {
+      font-size: clamp(32px, 9vw, 64px);
+      letter-spacing: -0.07em;
+      line-height: 0.95;
+      margin: 0;
     }
 
-    .index-link {
-      color: var(--red);
-      text-decoration: none;
-      border-bottom: 1px solid var(--red);
-      padding-bottom: 5px;
+    .count {
+      font-size: 11px;
       white-space: nowrap;
     }
 
-    .next {
-      padding: 28px 5%;
+    .map {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .map img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      margin-top: 14px;
+      padding-top: 12px;
       border-top: 1px solid var(--red);
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: 0.05em;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 18px 5%;
-      }
-
-      .hero {
-        min-height: 78vh;
-        padding-top: 10vh;
-      }
-
-      h1 {
-        font-size: clamp(62px, 17vw, 105px);
-      }
-
-      .intro {
-        align-items: start;
-        flex-direction: column;
-        gap: 12px;
+    @media (min-width: 600px) {
+      main {
+        padding-top: 42px;
       }
     }
   </style>
@@ -117,38 +91,28 @@
 
 <body>
   <header>
-    <div>CCKC®</div>
-    <div>COCA-COLA SHOP GUIDE</div>
-    <div>2026</div>
+    <span>CCKC®</span>
+    <span>COCA-COLA SHOP GUIDE</span>
+    <span>2026</span>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="eyebrow">SEOUL, KOREA — 2026</div>
+    <div class="heading">
+      <h1>THE MAP.</h1>
+      <div class="count">01—10 / SINHEUNG MARKET</div>
+    </div>
 
-      <h1>
-        <span>COCA-</span>
-        <span>COLA</span>
-        <span>CLUB.</span>
-      </h1>
+    <div class="map">
+      <img
+        src="sinheung-map.png"
+        alt="신흥시장 안내 지도"
+      >
+    </div>
 
-      <div class="intro">
-        <p>
-          A LOCAL GUIDE TO PLACES<br>
-          SERVING COCA-COLA.<br>
-          SINHEUNG MARKET & HAEBANGCHON.
-        </p>
-
-        <a class="index-link" href="#about">
-          EXPLORE THE GUIDE ↘
-        </a>
-      </div>
-    </section>
-
-    <section class="next" id="about">
-      <span>19 PLACES · 02 NEIGHBORHOODS</span>
-      <span>INDEX COMING SOON ↗</span>
-    </section>
+    <div class="caption">
+      <span>SINHEUNG MARKET</span>
+      <span>SEOUL, KOREA ↗</span>
+    </div>
   </main>
 </body>
 </html>

@@ -1,1 +1,228 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>01 — H5NG | 신흥시장</title>
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--red);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 34px 24px 90px;
+    }
+
+    /* HEADER */
+
+    .shop-header {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .shop-number {
+      margin: 0;
+      font-size: clamp(100px, 25vw, 190px);
+      font-weight: 800;
+      line-height: 0.8;
+      letter-spacing: -0.095em;
+    }
+
+    .shop-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .shop-name {
+      margin: 0;
+      font-size: clamp(27px, 6vw, 44px);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      word-break: keep-all;
+    }
+
+    .shop-category {
+      flex-shrink: 0;
+      margin: 0 0 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: right;
+      letter-spacing: -0.02em;
+    }
+
+    /* IMAGE */
+
+    .shop-image {
+      width: 100%;
+      margin: 34px 0 0;
+      text-align: center;
+    }
+
+    .shop-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 720px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    /* QUOTE */
+
+    .shop-quote {
+      margin: 38px 0 0;
+      font-size: clamp(24px, 5.5vw, 38px);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.06em;
+      word-break: keep-all;
+    }
+
+    /* DESCRIPTION */
+
+    .shop-description {
+      margin-top: 34px;
+    }
+
+    .shop-subtitle {
+      margin: 0 0 15px;
+      font-size: clamp(19px, 4vw, 26px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.045em;
+      word-break: keep-all;
+    }
+
+    .shop-copy {
+      max-width: 470px;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.85;
+      letter-spacing: -0.025em;
+      word-break: keep-all;
+    }
+
+    @media (min-width: 600px) {
+      .page {
+        padding: 52px 42px 110px;
+      }
+
+      .shop-header {
+        margin-bottom: 42px;
+      }
+
+      .shop-image {
+        margin-top: 46px;
+      }
+
+      .shop-image img {
+        max-height: 780px;
+      }
+
+      .shop-quote {
+        margin-top: 48px;
+      }
+
+      .shop-description {
+        margin-top: 42px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .page {
+        padding: 28px 17px 70px;
+      }
+
+      .shop-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .shop-category {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <article class="shop" id="shop-01">
+
+      <header class="shop-header">
+        <p class="shop-number">01</p>
+
+        <div class="shop-heading">
+          <h1 class="shop-name">
+            H5NG<br>
+            홍석우 사장
+          </h1>
+
+          <p class="shop-category">
+            AMERICAN<br>
+            CHINESE
+          </p>
+        </div>
+      </header>
+
+      <figure class="shop-image">
+        <img
+          src="01.png"
+          alt="H5NG 홍석우 사장과 가게"
+        >
+      </figure>
+
+      <blockquote class="shop-quote">
+        "시장이 살아나야<br>
+        동네도 살아납니다."
+      </blockquote>
+
+      <section class="shop-description">
+        <h2 class="shop-subtitle">
+          3대가 지켜온 자리에서
+        </h2>
+
+        <p class="shop-copy">
+          신흥시장에 새로운 감각을 더하는
+          아메리칸 차이니즈 레스토랑.<br><br>
+          해방촌에서 나고 자라, 3대째 가족이
+          지켜온 자리에서 가게를 이어간다.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+</body>
+</html>
+

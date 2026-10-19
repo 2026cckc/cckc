@@ -19,6 +19,7 @@
     html,
     body {
       margin: 0;
+      padding: 0;
       min-height: 100%;
       background: var(--cream);
       font-family: Arial, Helvetica, sans-serif;
@@ -31,8 +32,8 @@
 
     .map-stage {
       position: relative;
-      width: min(100vw, 46.97svh);
-      aspect-ratio: 962 / 2048;
+      width: min(100vw, 46.17svh);
+      aspect-ratio: 831 / 1800;
       overflow: hidden;
       background: var(--cream);
     }
@@ -44,26 +45,18 @@
       object-fit: fill;
     }
 
+    /* 제목: 원래 지도 이미지에 제목이 있다면 별도 제목을 표시하지 않음 */
     .map-title {
-      position: absolute;
-      top: 3.1%;
-      left: 4.7%;
-      z-index: 2;
-      margin: 0;
-      color: var(--red);
-      font-size: clamp(12px, 3.5vw, 28px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      white-space: nowrap;
+      display: none;
     }
 
-    /* 숫자가 들어간 뾰족한 지도 핀 */
+    /* 숫자 핀: 기존 뾰족한 모양을 유지하면서 가로 폭만 좁게 */
     .pin {
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: 8.2%;
-      aspect-ratio: 60 / 76;
+      width: 7.2%;
+      aspect-ratio: 48 / 76;
       transform: translate(-50%, -100%);
       display: block;
       z-index: 3;
@@ -96,23 +89,17 @@
       transform: translate(-50%, -100%) scale(0.96);
     }
 
-    /* 작은 원: 좌표가 원의 아래쪽 끝에 맞춰짐 */
+    /* 작은 빨간 원: 좌표는 원의 중심 기준 */
     .dot {
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: 2.1%;
+      width: 2.5%;
       aspect-ratio: 1;
       border-radius: 50%;
       background: var(--red);
-      transform: translate(-50%, -100%);
+      transform: translate(-50%, -50%);
       z-index: 2;
-    }
-
-    @media (min-width: 700px) {
-      .map-stage {
-        width: min(100vw, 46.97svh, 500px);
-      }
     }
   </style>
 </head>
@@ -120,164 +107,136 @@
 <body>
   <main class="map-stage">
 
-    <!-- 지도 이미지 -->
+    <!-- 기존 지도 이미지 -->
     <img
       class="map-image"
       src="sinheung-map.png"
       alt="COCA-COLA × 신흥시장 지도"
     >
 
-    <h1 class="map-title">COCA-COLA × 신흥시장</h1>
-
     <!-- 01 -->
     <a class="pin" href="shops/shop-01.html"
        style="--x:40.3%; --y:53.3%;" aria-label="상점 01">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">01</text>
+          d="M24 0
+             C10.75 0 0 10.75 0 24
+             C0 41 24 76 24 76
+             C24 76 48 41 48 24
+             C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">01</text>
       </svg>
     </a>
 
     <!-- 02 -->
     <a class="pin" href="shops/shop-02.html"
        style="--x:28.9%; --y:54.0%;" aria-label="상점 02">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">02</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">02</text>
       </svg>
     </a>
 
     <!-- 03 -->
     <a class="pin" href="shops/shop-03.html"
        style="--x:49.1%; --y:68.1%;" aria-label="상점 03">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">03</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">03</text>
       </svg>
     </a>
 
     <!-- 04 -->
     <a class="pin" href="shops/shop-04.html"
        style="--x:63.2%; --y:81.6%;" aria-label="상점 04">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">04</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">04</text>
       </svg>
     </a>
 
     <!-- 05 -->
     <a class="pin" href="shops/shop-05.html"
        style="--x:57.3%; --y:68.6%;" aria-label="상점 05">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">05</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">05</text>
       </svg>
     </a>
 
     <!-- 06 -->
     <a class="pin" href="shops/shop-06.html"
        style="--x:76.9%; --y:56.7%;" aria-label="상점 06">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">06</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">06</text>
       </svg>
     </a>
 
     <!-- 07 -->
     <a class="pin" href="shops/shop-07.html"
        style="--x:78.2%; --y:46.7%;" aria-label="상점 07">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">07</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">07</text>
       </svg>
     </a>
 
     <!-- 08 -->
     <a class="pin" href="shops/shop-08.html"
        style="--x:30.6%; --y:48.2%;" aria-label="상점 08">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">08</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">08</text>
       </svg>
     </a>
 
     <!-- 09 -->
     <a class="pin" href="shops/shop-09.html"
        style="--x:48.9%; --y:43.8%;" aria-label="상점 09">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">09</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">09</text>
       </svg>
     </a>
 
     <!-- 10 -->
     <a class="pin" href="shops/shop-10.html"
        style="--x:36.9%; --y:45.7%;" aria-label="상점 10">
-      <svg viewBox="0 0 60 76" aria-hidden="true">
+      <svg viewBox="0 0 48 76" aria-hidden="true">
         <path class="pin-shape"
-          d="M30 0 C13.43 0 0 13.43 0 30
-             C0 49 30 76 30 76
-             C30 76 60 49 60 30
-             C60 13.43 46.57 0 30 0 Z"/>
-        <text class="pin-number" x="30" y="29">10</text>
+          d="M24 0 C10.75 0 0 10.75 0 24 C0 41 24 76 24 76 C24 76 48 41 48 24 C48 10.75 37.25 0 24 0 Z"/>
+        <text class="pin-number" x="24" y="25">10</text>
       </svg>
     </a>
 
-    <!-- 작은 원 5개 -->
+    <!-- 작은 원 5개: 새로 표시한 이미지 기준 -->
     <span class="dot"
-      style="--x:56.7%; --y:28.7%;"
+      style="--x:57.5%; --y:29.8%;"
       aria-hidden="true"></span>
 
     <span class="dot"
-      style="--x:57.2%; --y:36.7%;"
+      style="--x:58.2%; --y:38.6%;"
       aria-hidden="true"></span>
 
     <span class="dot"
-      style="--x:31.5%; --y:57.3%;"
+      style="--x:31.4%; --y:58.5%;"
       aria-hidden="true"></span>
 
     <span class="dot"
-      style="--x:39.4%; --y:63.7%;"
+      style="--x:39.4%; --y:65.3%;"
       aria-hidden="true"></span>
 
     <span class="dot"
-      style="--x:69.9%; --y:58.2%;"
+      style="--x:70.0%; --y:59.3%;"
       aria-hidden="true"></span>
 
   </main>

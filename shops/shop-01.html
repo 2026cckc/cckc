@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F3F2EC">
+
   <title>01 — H5NG</title>
 
   <style>
@@ -30,7 +31,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 1080 × 1920 캔버스 */
+    /* 기본 디자인 캔버스 */
     .page {
       position: relative;
       width: 100%;
@@ -84,7 +85,7 @@
       word-break: keep-all;
     }
 
-    /* 사진 */
+    /* 매장 사진 */
     .shop-photo {
       position: absolute;
       top: 36%;
@@ -134,16 +135,29 @@
       white-space: nowrap;
     }
 
+    /* 텍스트 선택 가능 */
     .page,
     .page * {
       user-select: text;
       -webkit-user-select: text;
     }
 
-    /* PC: 가운데에 콘텐츠, 양옆은 배경색 */
+    /* 화면이 넓은 모바일에서는 화면 높이에 맞춤 */
+    @media (max-width: 699px) and (min-aspect-ratio: 9/19) {
+      .page {
+        width: auto;
+        height: 100svh;
+        max-width: none;
+        aspect-ratio: auto;
+      }
+    }
+
+    /* PC에서는 가운데 콘텐츠와 양옆 배경 */
     @media (min-width: 700px) {
       .page {
         width: min(100%, 540px);
+        height: auto;
+        aspect-ratio: 1080 / 1920;
       }
     }
   </style>

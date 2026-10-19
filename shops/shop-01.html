@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F3F2EC">
   <title>01 — H5NG</title>
 
@@ -22,35 +22,35 @@
       margin: 0;
       min-height: 100%;
       background: var(--bg);
-      color: var(--red);
-      font-family: Arial, Helvetica, sans-serif;
-      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      display: flex;
-      justify-content: center;
+      color: var(--red);
+      font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic",
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* 1080 × 1920 디자인 캔버스 */
-
+    /* 전체 디자인 캔버스 */
     .page {
       position: relative;
-      width: min(100%, calc(100svh * 1080 / 1920));
+      width: min(100vw, 56.25svh);
       aspect-ratio: 1080 / 1920;
-      flex-shrink: 0;
+      margin: 0 auto;
       overflow: hidden;
       background: var(--bg);
+
+      /* cqw가 캔버스 너비를 기준으로 계산되게 설정 */
+      container-type: inline-size;
     }
 
-    /* 홍석우 사장 */
-
+    /* 이름 라벨 */
     .name-label {
       position: absolute;
-      left: 10.2%;
+      left: 10.35%;
       top: 5.45%;
       margin: 0;
-      padding: 0.25em 0.2em 0.3em;
+      padding: 0.22em 0.18em 0.28em;
       background: var(--red);
       color: var(--bg);
       font-size: 2.55cqw;
@@ -60,26 +60,24 @@
     }
 
     /* H5NG */
-
     .shop-name {
       position: absolute;
-      top: 7.55%;
-      left: 9.1%;
+      left: 9.4%;
+      top: 7.7%;
       margin: 0;
-      color: var(--red);
       font-size: 17.7cqw;
       font-weight: 800;
-      line-height: 0.95;
+      line-height: 0.9;
       letter-spacing: -0.085em;
+      white-space: nowrap;
     }
 
     /* 소개 문구 */
-
     .intro {
       position: absolute;
-      top: 15.55%;
       left: 9.5%;
-      width: 80%;
+      top: 15.55%;
+      width: 81%;
       margin: 0;
       font-size: 2.45cqw;
       font-weight: 700;
@@ -88,16 +86,14 @@
       word-break: keep-all;
     }
 
-    /* 매장 사진 */
-
+    /* 메인 사진 */
     .shop-photo {
       position: absolute;
-      top: 22.65%;
       left: 27.8%;
+      top: 22.65%;
       width: 62.2%;
       height: 40.3%;
       margin: 0;
-      overflow: hidden;
     }
 
     .shop-photo img {
@@ -109,7 +105,6 @@
     }
 
     /* 인용문 */
-
     .quote {
       position: absolute;
       top: 64.1%;
@@ -124,48 +119,40 @@
       word-break: keep-all;
     }
 
-    /* 하단 매장 분류 */
-
+    /* 하단 카테고리 */
     .footer-label {
       position: absolute;
       top: 80.1%;
       left: 10.2%;
       display: flex;
-      gap: 2.5cqw;
       align-items: baseline;
+      gap: 2.5cqw;
       margin: 0;
       font-size: 2.25cqw;
       font-weight: 700;
       line-height: 1.3;
       letter-spacing: -0.045em;
+      white-space: nowrap;
     }
 
-    .footer-number {
-      flex-shrink: 0;
-    }
-
-    /* 텍스트 복사 가능 */
-
+    /* 글자는 선택 및 복사 가능 */
     .page,
     .page * {
       user-select: text;
       -webkit-user-select: text;
     }
 
+    /* 큰 화면에서는 캔버스만 적당히 축소 */
     @media (min-width: 700px) {
-      body {
-        padding: 20px 0;
-      }
-
       .page {
-        width: min(100%, 540px, calc(100svh * 1080 / 1920));
+        width: min(56.25vw, 56.25svh, 540px);
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <main class="page" id="shop-01">
 
     <p class="name-label">홍석우 사장</p>
 
@@ -187,7 +174,7 @@
     </p>
 
     <p class="footer-label">
-      <span class="footer-number">01</span>
+      <span>01</span>
       <span>아메리칸 차이니즈</span>
     </p>
 

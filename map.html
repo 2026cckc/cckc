@@ -26,59 +26,117 @@
 
     body {
       background: var(--bg);
-      color: var(--red);
       font-family: Arial, Helvetica, sans-serif;
       overflow: hidden;
     }
 
     .page {
-      position: relative;
       width: 100%;
       height: 100vh;
       height: 100svh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
-      background: var(--bg);
     }
 
-    /* 지도 전체 화면 */
-    .map {
+    /* 지도 비율에 맞춘 영역 */
+    .map-stage {
+      position: relative;
+      width: min(100vw, 46.17svh);
+      aspect-ratio: 831 / 1800;
+      flex: 0 0 auto;
+    }
+
+    .map-image {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
+    /* 제목 */
+    .title {
+      position: absolute;
+      z-index: 5;
+      top: calc(env(safe-area-inset-top, 0px) + 14px);
+      left: 12px;
+      margin: 0;
+      padding: 7px 9px;
+      background: var(--bg);
+      color: var(--red);
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    /* 모든 핀의 공통 위치 기준 */
+    .pin {
+      position: absolute;
+      z-index: 3;
+      left: var(--x);
+      top: var(--y);
+      transform: translate(-50%, -100%);
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 숫자가 들어간 핀 */
+    .number-pin {
+      width: 34px;
+      height: 34px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--red);
+      transform: translate(-50%, -100%) rotate(-45deg);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 1px 2px #00000012;
     }
 
-    .map img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+    .number-pin span {
+      color: #FFFFFF;
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 800;
+      transform: rotate(45deg);
+      font-variant-numeric: tabular-nums;
     }
 
-    /* 지도 위에 겹쳐지는 제목 */
-    .title {
-      position: absolute;
-      z-index: 2;
-      top: calc(env(safe-area-inset-top, 0px) + 18px);
-      left: 16px;
-      margin: 0;
-      padding: 7px 10px;
-      background: var(--bg);
-      color: var(--red);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.2px;
+    /* 번호 없는 작은 빨간 원 */
+    .small-pin {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--red);
+      transform: translate(-50%, -50%);
     }
 
     @media (min-width: 700px) {
       .title {
-        top: 24px;
-        left: 24px;
-        font-size: 15px;
-        padding: 9px 12px;
+        top: 18px;
+        left: 18px;
+        font-size: 14px;
+      }
+
+      .number-pin {
+        width: 38px;
+        height: 38px;
+      }
+
+      .number-pin span {
+        font-size: 16px;
+      }
+
+      .small-pin {
+        width: 14px;
+        height: 14px;
       }
     }
   </style>
@@ -87,15 +145,90 @@
 <body>
   <div class="page">
 
-    <div class="map">
-      <img
-        src="sinheung-map.png"
-        alt="신흥시장 코카콜라 참여 매장 지도"
-      >
-    </div>
-
     <h1 class="title">COCA-COLA × 신흥시장</h1>
 
+    <div class="map-stage">
+
+      <!-- 경로를 수정한 지도 이미지 파일명으로 변경 -->
+      <img
+        class="map-image"
+        src="sinheung-map.png"
+        alt="신흥시장 코카콜라 매장 지도"
+      >
+
+      <!-- 방문할 매장 01–10 -->
+      <a class="pin number-pin" style="--x:40.3%; --y:53.3%;"
+         href="shops/shop-01.html" aria-label="매장 01">
+        <span>01</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:28.9%; --y:54.0%;"
+         href="shops/shop-02.html" aria-label="매장 02">
+        <span>02</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:49.1%; --y:68.1%;"
+         href="shops/shop-03.html" aria-label="매장 03">
+        <span>03</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:63.2%; --y:81.6%;"
+         href="shops/shop-04.html" aria-label="매장 04">
+        <span>04</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:57.3%; --y:68.6%;"
+         href="shops/shop-05.html" aria-label="매장 05">
+        <span>05</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:76.9%; --y:56.7%;"
+         href="shops/shop-06.html" aria-label="매장 06">
+        <span>06</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:78.2%; --y:46.7%;"
+         href="shops/shop-07.html" aria-label="매장 07">
+        <span>07</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:30.6%; --y:48.2%;"
+         href="shops/shop-08.html" aria-label="매장 08">
+        <span>08</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:48.9%; --y:43.8%;"
+         href="shops/shop-09.html" aria-label="매장 09">
+        <span>09</span>
+      </a>
+
+      <a class="pin number-pin" style="--x:36.9%; --y:45.7%;"
+         href="shops/shop-10.html" aria-label="매장 10">
+        <span>10</span>
+      </a>
+
+      <!-- 기타 코카콜라 취급 매장: 작은 원 5개 -->
+      <span class="pin small-pin"
+            style="--x:56.9%; --y:29.9%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:57.2%; --y:36.4%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:31.4%; --y:58.0%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:39.4%; --y:62.7%;"
+            aria-hidden="true"></span>
+
+      <span class="pin small-pin"
+            style="--x:69.0%; --y:58.3%;"
+            aria-hidden="true"></span>
+
+    </div>
   </div>
 </body>
 </html>

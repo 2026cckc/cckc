@@ -31,7 +31,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 전체 디자인 캔버스 */
+    /* 1080 × 1920 디자인 캔버스 */
     .page {
       position: relative;
       width: min(100vw, 56.25svh);
@@ -39,12 +39,10 @@
       margin: 0 auto;
       overflow: hidden;
       background: var(--bg);
-
-      /* cqw가 캔버스 너비를 기준으로 계산되게 설정 */
       container-type: inline-size;
     }
 
-    /* 이름 라벨 */
+    /* 이름표 */
     .name-label {
       position: absolute;
       left: 10.35%;
@@ -59,7 +57,7 @@
       letter-spacing: -0.06em;
     }
 
-    /* H5NG */
+    /* H5NG 타이틀 */
     .shop-name {
       position: absolute;
       left: 9.4%;
@@ -86,7 +84,7 @@
       word-break: keep-all;
     }
 
-    /* 메인 사진 */
+    /* 매장 사진 */
     .shop-photo {
       position: absolute;
       left: 27.8%;
@@ -94,6 +92,7 @@
       width: 62.2%;
       height: 40.3%;
       margin: 0;
+      overflow: hidden;
     }
 
     .shop-photo img {
@@ -119,7 +118,7 @@
       word-break: keep-all;
     }
 
-    /* 하단 카테고리 */
+    /* 하단 매장 정보 */
     .footer-label {
       position: absolute;
       top: 80.1%;
@@ -135,14 +134,14 @@
       white-space: nowrap;
     }
 
-    /* 글자는 선택 및 복사 가능 */
+    /* 텍스트 선택 및 복사 */
     .page,
     .page * {
       user-select: text;
       -webkit-user-select: text;
     }
 
-    /* 큰 화면에서는 캔버스만 적당히 축소 */
+    /* PC에서도 동일한 비율 유지 */
     @media (min-width: 700px) {
       .page {
         width: min(56.25vw, 56.25svh, 540px);

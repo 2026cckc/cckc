@@ -26,12 +26,11 @@
 
     body {
       color: var(--red);
-      font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic",
-        sans-serif;
+      font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 1080 × 1920 디자인 캔버스 */
+    /* 1080 × 1920 기준 디자인 캔버스 */
     .page {
       position: relative;
       width: min(100vw, 56.25svh);
@@ -70,7 +69,7 @@
       white-space: nowrap;
     }
 
-    /* 소개 문구 */
+    /* 소개 문구: 원래 행간 유지 */
     .intro {
       position: absolute;
       left: 9.5%;
@@ -84,7 +83,7 @@
       word-break: keep-all;
     }
 
-    /* 매장 사진 */
+    /* 사진: 시안 기준으로 배치 */
     .shop-photo {
       position: absolute;
       left: 27.8%;
@@ -134,14 +133,14 @@
       white-space: nowrap;
     }
 
-    /* 텍스트 선택 및 복사 */
+    /* 글자 선택 및 복사 */
     .page,
     .page * {
       user-select: text;
       -webkit-user-select: text;
     }
 
-    /* PC에서도 동일한 비율 유지 */
+    /* PC: 동일한 디자인 비율로 축소 */
     @media (min-width: 700px) {
       .page {
         width: min(56.25vw, 56.25svh, 540px);

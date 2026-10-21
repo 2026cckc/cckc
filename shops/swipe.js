@@ -4,22 +4,37 @@
   - 손가락을 오른쪽으로 밀면 → 이전 가게 (02 → 01)
   - 컴퓨터에서는 키보드 ← → 화살표로도 넘어감
   - 페이지 주소(shop-01.html 등)에서 번호를 읽어서 앞뒤 페이지를 자동으로 찾음
+  - 마지막 가게(10번)에서 다음으로 넘기면 해방촌 연결 페이지로 이동
+  - 다른 페이지에서 쓸 때는 <script src="..." data-prev="이전주소" data-next="다음주소"> 처럼 직접 지정 가능
 */
 (function () {
-  // 가게가 총 몇 개인지 (마지막 가게에서는 더 넘어가지 않음)
+  // 가게가 총 몇 개인지
   var TOTAL = 10;
 
-  var match = location.pathname.match(/shop-(\d+)\.html/);
-  if (!match) return;
+  // 마지막 가게 다음에 갈 페이지 (shops 폴더 기준 주소)
+  var AFTER_LAST = "../to-haebangchon.html";
 
-  var current = parseInt(match[1], 10);
+  var script = document.currentScript;
+  var prevUrl = null;
+  var nextUrl = null;
 
-  function pageUrl(n) {
-    return "shop-" + String(n).padStart(2, "0") + ".html";
+  if (script && (script.dataset.prev || script.dataset.next)) {
+    // 주소를 직접 지정한 경우
+    prevUrl = script.dataset.prev || null;
+    nextUrl = script.dataset.next || null;
+  } else {
+    var match = location.pathname.match(/shop-(\d+)\.html/);
+    if (!match) return;
+
+    var current = parseInt(match[1], 10);
+
+    var pageUrl = function (n) {
+      return "shop-" + String(n).padStart(2, "0") + ".html";
+    };
+
+    prevUrl = current > 1 ? pageUrl(current - 1) : null;
+    nextUrl = current < TOTAL ? pageUrl(current + 1) : AFTER_LAST;
   }
-
-  var prevUrl = current > 1 ? pageUrl(current - 1) : null;
-  var nextUrl = current < TOTAL ? pageUrl(current + 1) : null;
 
   var page = document.querySelector(".page");
   var leaving = false;

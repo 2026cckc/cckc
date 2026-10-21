@@ -38,7 +38,7 @@
       user-select: none;
     }
 
-    /* 화면 한 장 크기의 틀. 지도는 이 안을 꽉 채우고 넘치는 부분은 잘림 */
+    /* 화면 한 장 크기의 틀 */
     .page {
       position: relative;
       width: var(--cw);
@@ -49,15 +49,28 @@
       background: var(--bg);
     }
 
-    /* 지도: 화면을 빈틈없이 덮도록 크기를 맞추고 가운데 정렬 */
-    .map-stage {
+    /* 지도가 화면보다 길면 위아래로 밀어서 볼 수 있음 (스크롤 막대는 숨김) */
+    .scroller {
       position: absolute;
+      inset: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none;
+    }
+
+    .scroller::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* 지도: 화면 폭을 빈틈없이 채우고, 화면보다 짧아지지 않게 맞춤 */
+    .map-stage {
+      position: relative;
       left: 50%;
-      top: 50%;
       width: max(var(--cw), 100vh * var(--ratio));
       width: max(var(--cw), 100svh * var(--ratio));
       aspect-ratio: 1166 / 2480;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
     }
 
     .map-image {
@@ -167,6 +180,8 @@
 
   <div class="page">
 
+    <!-- data-focus: 처음 열었을 때 화면 가운데에 올 지도 위치 (0 = 맨 위, 1 = 맨 아래) -->
+    <div class="scroller" id="scroller" data-focus="0.62">
     <div class="map-stage">
 
       <img class="map-image" src="sinheung-map.png" width="1166" height="2480"
@@ -227,9 +242,23 @@
       <span class="dot" style="--x:70.0%; --y:59.2%;" aria-hidden="true"></span>
 
     </div>
+    </div>
 
     <h1 class="title">코카-콜라 X 신흥시장</h1>
 
   </div>
+
+  <script>
+    // 처음 열 때 핀들이 있는 곳이 화면에 오도록 지도 위치 맞추기
+    (function () {
+      var box = document.getElementById("scroller");
+      function place() {
+        var focus = parseFloat(box.getAttribute("data-focus")) || 0.5;
+        box.scrollTop = focus * box.scrollHeight - box.clientHeight / 2;
+      }
+      place();
+      window.addEventListener("load", place);
+    })();
+  </script>
 </body>
 </html>

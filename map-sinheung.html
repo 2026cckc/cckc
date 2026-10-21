@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>COCA-COLA × 신흥시장</title>
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--red);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      height: 100vh;   /* 오래된 브라우저용 */
+      height: 100svh;  /* 최신 브라우저용 (모바일 주소창 높이 반영) */
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .map {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 지도 이미지 비율: 831 x 1800 */
+    .map-stage {
+      position: relative;
+      width: min(100vw, 46.17vh);   /* 오래된 브라우저용 */
+      width: min(100vw, 46.17svh);
+      aspect-ratio: 831 / 1800;
+      flex: none;
+    }
+
+    .map-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    /* 제목 */
+    .title {
+      position: absolute;
+      z-index: 5;
+      top: calc(env(safe-area-inset-top, 0px) + 18px);
+      left: 16px;
+      margin: 0;
+      padding: 7px 10px;
+      background: var(--bg);
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.2px;
+    }
+
+    @media (min-width: 700px) {
+      .title {
+        top: 24px;
+        left: 24px;
+        font-size: 15px;
+        padding: 9px 12px;
+      }
+
+      .map-stage {
+        width: min(100vw, 46.17vh, 500px);
+        width: min(100vw, 46.17svh, 500px);
+      }
+    }
+
+    /* 숫자 핀: 좌표는 핀의 뾰족한 끝 기준 */
+    .pin {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 7.4%;
+      aspect-ratio: 54 / 68;
+      transform: translate(-50%, -100%);
+      transform-origin: 50% 100%;
+      transition: transform 0.12s ease;
+      display: block;
+      z-index: 3;
+      color: var(--red);
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pin svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .pin-number {
+      fill: #FFFFFF;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .pin:active {
+      transform: translate(-50%, -100%) scale(0.95);
+    }
+
+    /* 컴퓨터에서 마우스 올렸을 때 살짝 커지기 */
+    @media (hover: hover) {
+      .pin:hover {
+        transform: translate(-50%, -100%) scale(1.08);
+      }
+    }
+
+    /* 키보드로 이동할 때 표시 */
+    .pin:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    /* 작은 원: 좌표는 원의 중심 기준 */
+    .dot {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 2.5%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--red);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 핀 모양은 여기서 한 번만 정의하고, 아래 핀들이 이걸 가져다 씀 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="pin-shape" viewBox="0 0 54 68">
+      <path fill="currentColor"
+        d="M27 0 C12.1 0 0 12.1 0 27 C0 43 27 68 27 68 C27 68 54 43 54 27 C54 12.1 41.9 0 27 0 Z"/>
+    </symbol>
+  </svg>
+
+  <div class="page">
+
+    <div class="map">
+      <div class="map-stage">
+
+        <img
+          class="map-image"
+          src="sinheung-map.png"
+          width="831" height="1800"
+          alt="신흥시장 코카콜라 참여 매장 지도"
+        >
+
+        <!--
+          핀 추가/수정 방법:
+          - href  : 눌렀을 때 갈 가게 페이지
+          - --x   : 왼쪽에서 몇 % (가로 위치)
+          - --y   : 위에서 몇 % (세로 위치, 핀 끝이 닿는 곳)
+          - 숫자  : <text> 안의 글자
+        -->
+
+        <a class="pin" href="shops/shop-01.html" style="--x:40.3%; --y:54.3%;" aria-label="상점 01">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">01</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-02.html" style="--x:28.9%; --y:55.0%;" aria-label="상점 02">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">02</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-03.html" style="--x:39.4%; --y:65.3%;" aria-label="상점 03">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">03</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-04.html" style="--x:62.7%; --y:84.6%;" aria-label="상점 04">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">04</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-05.html" style="--x:57.4%; --y:71.6%;" aria-label="상점 05">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">05</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-06.html" style="--x:77.1%; --y:59.5%;" aria-label="상점 06">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">06</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-07.html" style="--x:78.5%; --y:47.0%;" aria-label="상점 07">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">07</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-08.html" style="--x:30.0%; --y:49.0%;" aria-label="상점 08">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">08</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-09.html" style="--x:49.3%; --y:44.8%;" aria-label="상점 09">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">09</text></svg>
+        </a>
+
+        <a class="pin" href="shops/shop-10.html" style="--x:37.2%; --y:46.5%;" aria-label="상점 10">
+          <svg viewBox="0 0 54 68" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">10</text></svg>
+        </a>
+
+        <!-- 작은 빨간 원 (클릭 안 됨) -->
+        <span class="dot" style="--x:57.5%; --y:29.4%;" aria-hidden="true"></span>
+        <span class="dot" style="--x:58.2%; --y:39.1%;" aria-hidden="true"></span>
+        <span class="dot" style="--x:31.4%; --y:58.6%;" aria-hidden="true"></span>
+        <span class="dot" style="--x:49.1%; --y:70.9%;" aria-hidden="true"></span>
+        <span class="dot" style="--x:70.0%; --y:59.2%;" aria-hidden="true"></span>
+
+      </div>
+    </div>
+
+    <h1 class="title">COCA-COLA × 신흥시장</h1>
+
+  </div>
+</body>
+</html>

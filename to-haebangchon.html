@@ -13,8 +13,8 @@
     :root {
       --bg: #F3F2EC;
       --red: #E1041B;
-      /* 디자인 기준(가로 1080px)의 1px. 화면 폭에 맞춰 자동으로 커지고 작아짐 */
-      --u: calc(min(100vw, 540px) / 1080);
+      /* 디자인 기준(가로 390px)의 1px. 메인 페이지와 같은 기준 */
+      --u: calc(min(100vw, 540px) / 390);
     }
 
     * {
@@ -49,16 +49,16 @@
       min-height: 100svh;
       margin: 0 auto;
       padding:
-        calc(var(--u) * 110 + env(safe-area-inset-top, 0px))
-        calc(var(--u) * 105)
-        calc(var(--u) * 120 + env(safe-area-inset-bottom, 0px))
-        calc(var(--u) * 102);
+        calc(var(--u) * 22 + env(safe-area-inset-top, 0px))
+        calc(var(--u) * 24)
+        calc(var(--u) * 44 + env(safe-area-inset-bottom, 0px))
+        calc(var(--u) * 24);
     }
 
     /* 오른쪽 위 작은 글씨 (누르면 신흥시장 지도로) */
     .brand {
       text-align: right;
-      font-size: calc(var(--u) * 24);
+      font-size: calc(var(--u) * 12);
       letter-spacing: -0.02em;
     }
 
@@ -72,9 +72,9 @@
     .route {
       display: flex;
       align-items: center;
-      gap: calc(var(--u) * 16);
-      margin-top: calc(var(--u) * 150);
-      font-size: calc(var(--u) * 30);
+      gap: calc(var(--u) * 6);
+      margin-top: calc(var(--u) * 54);
+      font-size: calc(var(--u) * 14);
       letter-spacing: -0.03em;
     }
 
@@ -83,7 +83,7 @@
     }
 
     .route .to {
-      padding: calc(var(--u) * 5) calc(var(--u) * 9);
+      padding: calc(var(--u) * 4) calc(var(--u) * 8);
       background: var(--bg);
       color: var(--red);
       line-height: 1.15;
@@ -91,8 +91,8 @@
 
     /* 큰 문구 */
     .headline {
-      margin-top: calc(var(--u) * 28);
-      font-size: calc(var(--u) * 92);
+      margin-top: calc(var(--u) * 12);
+      font-size: calc(var(--u) * 44);
       font-weight: 900;
       line-height: 1.12;
       letter-spacing: -0.05em;
@@ -101,17 +101,17 @@
     /* 언덕을 따라 내려가는 길처럼, 문구에서 아래로 이어지는 선 */
     .path {
       flex: 1;
-      min-height: calc(var(--u) * 180);
-      margin: calc(var(--u) * 60) 0 calc(var(--u) * 60) calc(var(--u) * 6);
-      width: calc(var(--u) * 4);
+      min-height: calc(var(--u) * 60);
+      margin: calc(var(--u) * 22) 0 calc(var(--u) * 22) calc(var(--u) * 2);
+      width: calc(var(--u) * 3);
       background: var(--bg);
       transform-origin: top;
       animation: draw 1.4s 0.5s cubic-bezier(.6, 0, .2, 1) both;
     }
 
     .desc {
-      font-size: calc(var(--u) * 28);
-      line-height: 1.6;
+      font-size: calc(var(--u) * 14.5);
+      line-height: 1.75;
       letter-spacing: -0.03em;
     }
 
@@ -120,11 +120,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: calc(var(--u) * 90);
-      padding: calc(var(--u) * 34) calc(var(--u) * 38);
+      margin-top: calc(var(--u) * 32);
+      padding: calc(var(--u) * 17) calc(var(--u) * 20);
       background: var(--bg);
       color: var(--red);
-      font-size: calc(var(--u) * 36);
+      font-size: calc(var(--u) * 17);
       letter-spacing: -0.03em;
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
@@ -141,7 +141,7 @@
 
     @media (hover: hover) {
       .next:hover .arrow {
-        transform: translateX(calc(var(--u) * 10));
+        transform: translateX(calc(var(--u) * 6));
       }
     }
 
@@ -161,7 +161,7 @@
     .next.rise { animation-delay: 1.4s; }
 
     @keyframes rise {
-      from { opacity: 0; transform: translateY(calc(var(--u) * 40)); }
+      from { opacity: 0; transform: translateY(calc(var(--u) * 18)); }
       to { opacity: 1; transform: none; }
     }
 

@@ -35,16 +35,16 @@
       word-break: keep-all;
     }
 
-    /* 페이지 전체 높이를 시안(2348px)과 맞춰서, 맨 아래 번호가 항상 같은 위치에 오게 함 */
+    /* 페이지 전체 높이를 시안 길이에 맞춰서, 맨 아래 번호가 항상 같은 위치에 오게 함 */
     .page {
       position: relative;
       display: flex;
       flex-direction: column;
       width: min(100vw, 540px);
-      min-height: calc(var(--u) * 2348);
+      min-height: calc(var(--u) * 2158);
       margin: 0 auto;
       padding:
-        calc(var(--u) * 300 + env(safe-area-inset-top, 0px))
+        calc(var(--u) * 110 + env(safe-area-inset-top, 0px))
         calc(var(--u) * 105)
         calc(var(--u) * 160 + env(safe-area-inset-bottom, 0px))
         calc(var(--u) * 102);

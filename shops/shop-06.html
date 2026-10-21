@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>해방촌 수제돈까스 | COCA-COLA × 신흥시장</title>
+
+  <!-- 글꼴: Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+      /* 디자인 시안(가로 1080px)의 1px. 화면 폭에 맞춰 자동으로 커지고 작아짐 */
+      --u: calc(min(100vw, 540px) / 1080);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: var(--bg);
+    }
+
+    body {
+      color: var(--red);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-weight: 700;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+    }
+
+    /* 페이지 전체 높이를 시안(2348px)과 맞춰서, 맨 아래 번호가 항상 같은 위치에 오게 함 */
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: min(100vw, 540px);
+      min-height: calc(var(--u) * 2348);
+      margin: 0 auto;
+      padding:
+        calc(var(--u) * 300 + env(safe-area-inset-top, 0px))
+        calc(var(--u) * 105)
+        calc(var(--u) * 160 + env(safe-area-inset-bottom, 0px))
+        calc(var(--u) * 102);
+    }
+
+    p,
+    h1 {
+      margin: 0;
+    }
+
+    /* 오른쪽 정렬이 필요한 요소에 붙이는 표시 */
+    .r {
+      text-align: right;
+    }
+
+    /* 오른쪽 위 작은 글씨 (누르면 지도로) */
+    .brand {
+      text-align: right;
+      font-size: calc(var(--u) * 24);
+      letter-spacing: -0.02em;
+    }
+
+    .brand a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 빨간 박스 이름표 */
+    .owner {
+      width: fit-content;
+      padding: calc(var(--u) * 5) calc(var(--u) * 9);
+      background: var(--red);
+      color: var(--bg);
+      font-size: calc(var(--u) * 30);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .owner.r {
+      margin-left: auto;
+    }
+
+    /* 큰 가게 이름 */
+    .name {
+      font-size: calc(var(--u) * 155);
+      font-weight: 900;
+      line-height: 1.07;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      font-size: calc(var(--u) * 27);
+      letter-spacing: -0.03em;
+    }
+
+    .desc {
+      font-size: calc(var(--u) * 26);
+      line-height: 1.55;
+      letter-spacing: -0.03em;
+    }
+
+    /* 인용문 */
+    .quote {
+      font-size: calc(var(--u) * 57);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    /* 왼쪽 정렬 인용문은 첫 따옴표만 앞으로 튀어나오게 */
+    .quote:not(.r) {
+      padding-left: calc(var(--u) * 20);
+      text-indent: calc(var(--u) * -20);
+    }
+
+    /* 가게 사진 */
+    .photo {
+      display: block;
+      object-fit: cover;
+    }
+
+    .photo.r {
+      margin-left: auto;
+    }
+
+    /* 아래 번호 + 분류 (모든 페이지 같은 위치) */
+    .footer {
+      display: flex;
+      gap: calc(var(--u) * 26);
+      margin-top: auto;
+      padding-top: calc(var(--u) * 100);
+      font-size: calc(var(--u) * 22);
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- 누르면 신흥시장 지도로 돌아감 -->
+    <p class="brand"><a href="../map-sinheung.html">코카-콜라 X 신흥시장</a></p>
+    <p class="owner" style="margin-top: calc(var(--u) * 40);">양지연 사장</p>
+    <h1 class="name" style="margin-top: calc(var(--u) * 4);">해방촌<br>
+      수제돈까스</h1>
+
+    <img class="photo" src="shop-06.png" alt="해방촌 수제돈까스 매장의 양지연 사장"
+         style="width: calc(var(--u) * 797); aspect-ratio: 797 / 529; margin-top: calc(var(--u) * 32);">
+    <p class="subtitle" style="margin-top: calc(var(--u) * 25);">한 접시에 담는 변함없는 정성</p>
+
+    <p class="desc" style="margin-top: calc(var(--u) * 43);">
+      오랫동안 살아온 동네에서, 가장 자신 있는 돈가스 하나로 시작한 1인 가게.<br>
+      매일 반복되는 일상 속에서도 한 접시 한 접시에 정성을 다하는 것,<br>
+      그것이 오랫동안 지켜온 자신만의 원칙이다.
+    </p>
+
+    <p class="quote r" style="margin-top: calc(var(--u) * 156);">
+      “신흥시장은 오늘도 묵묵히<br>
+      하루를 이어가게 해주는<br>
+      제 삶의 터전이에요.”
+    </p>
+
+    <p class="footer">
+      <span>06</span>
+      <span>수제 돈가스 전문점</span>
+    </p>
+
+  </main>
+
+  <!-- 좌우로 넘겨서 다른 가게로 이동 -->
+  <script src="swipe.js"></script>
+</body>
+</html>

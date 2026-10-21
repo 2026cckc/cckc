@@ -58,6 +58,12 @@
       letter-spacing: -0.02em;
     }
 
+    .brand a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* 가게 사진 (가로로 꽉 차게) */
     .photo {
       display: block;
@@ -133,7 +139,8 @@
 <body>
   <main class="page">
 
-    <p class="brand">코카-콜라 X 신흥시장</p>
+    <!-- 누르면 신흥시장 지도로 돌아감 -->
+    <p class="brand"><a href="../map-sinheung.html">코카-콜라 X 신흥시장</a></p>
 
     <img class="photo" src="shop-02.png" alt="팁시타코 매장 창가에서 타코를 먹는 손님들">
 
@@ -163,5 +170,8 @@
     </p>
 
   </main>
+
+  <!-- 좌우로 넘겨서 다른 가게로 이동 -->
+  <script src="swipe.js"></script>
 </body>
 </html>

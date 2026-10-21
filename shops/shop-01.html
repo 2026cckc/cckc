@@ -54,6 +54,12 @@
       letter-spacing: -0.02em;
     }
 
+    .brand a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* 빨간 박스 이름표 */
     .owner {
       display: inline-block;
@@ -122,7 +128,8 @@
 <body>
   <main class="page">
 
-    <p class="brand">코카-콜라 X 신흥시장</p>
+    <!-- 누르면 신흥시장 지도로 돌아감 -->
+    <p class="brand"><a href="../map-sinheung.html">코카-콜라 X 신흥시장</a></p>
 
     <p class="owner">홍석우 사장</p>
     <h1 class="name">H5NG</h1>
@@ -149,5 +156,8 @@
     </p>
 
   </main>
+
+  <!-- 좌우로 넘겨서 다른 가게로 이동 -->
+  <script src="swipe.js"></script>
 </body>
 </html>

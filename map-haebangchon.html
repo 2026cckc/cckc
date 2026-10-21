@@ -6,15 +6,6 @@
   <meta name="theme-color" content="#F3F2EC">
   <title>COCA-COLA × 해방촌</title>
 
-  <!-- 링크 공유 미리보기 (카톡 등) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="COCA-COLA × 해방촌">
-  <meta property="og:description" content="신흥시장에서 해방촌까지, 한 골목에서 2년 with 코카-콜라">
-  <meta property="og:image" content="https://2026cckc.github.io/cckc/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-
   <!-- 글꼴: Pretendard -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
@@ -174,6 +165,40 @@
       z-index: 2;
       pointer-events: none;
     }
+    /* 아래쪽 안내: 잠깐 보였다가 사라짐 */
+    .guide {
+      position: absolute;
+      z-index: 6;
+      left: 50%;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--red);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(225, 4, 27, 0.25);
+      transform: translate(-50%, 12px);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    .guide.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .guide svg {
+      width: 12px;
+      height: 15px;
+      flex: none;
+    }
   </style>
 </head>
 
@@ -253,6 +278,12 @@
 
     <h1 class="title">코카-콜라 X 해방촌</h1>
 
+    <!-- 안내 문구 -->
+    <p class="guide" id="guide" role="status">
+      <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/></svg>
+      숫자를 누르면 가게 이야기가 열려요
+    </p>
+
   </div>
 
   <script>
@@ -265,6 +296,16 @@
       }
       place();
       window.addEventListener("load", place);
+
+      // 안내 문구: 열자마자 보여주고, 5초 뒤나 화면을 만지면 사라짐
+      var guide = document.getElementById("guide");
+      function hide() { guide.classList.remove("show"); }
+      setTimeout(function () { guide.classList.add("show"); }, 500);
+      setTimeout(hide, 5500);
+      // (처음 위치 맞출 때 생기는 움직임은 빼고, 사람이 직접 밀었을 때만)
+      setTimeout(function () {
+        box.addEventListener("scroll", function () { setTimeout(hide, 800); }, { once: true, passive: true });
+      }, 1500);
     })();
   </script>
 </body>

@@ -106,3 +106,55 @@
     if (e.key === "ArrowLeft") go(prevUrl, "prev");
   });
 })();
+
+/*
+  처음 가게 페이지에 들어왔을 때 한 번만 보여주는 사용법 안내
+  - 몇 초 뒤 저절로 사라지고, 누르면 바로 닫힘
+  - 한 번 본 사람에게는 다시 안 뜸 (이 핸드폰 브라우저 기준)
+*/
+(function () {
+  var KEY = "cckc-shop-guide-seen";
+  try {
+    if (localStorage.getItem(KEY)) return;
+  } catch (e) {}
+
+  var css =
+    ".shop-guide{position:fixed;z-index:50;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);" +
+    "width:min(calc(100vw - 40px),340px);padding:14px 16px;background:#E1041B;color:#F3F2EC;" +
+    "font-family:Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;font-size:13px;" +
+    "line-height:1.35;letter-spacing:-0.02em;box-shadow:0 8px 24px rgba(225,4,27,.28);" +
+    "transform:translate(-50%,14px);opacity:0;transition:opacity .4s ease,transform .4s ease;cursor:pointer}" +
+    ".shop-guide.show{opacity:1;transform:translate(-50%,0)}" +
+    ".shop-guide p{margin:0;display:flex;gap:10px;align-items:baseline}" +
+    ".shop-guide p+p{margin-top:8px}" +
+    ".shop-guide b{flex:none;width:34px;font-weight:800}" +
+    ".shop-guide small{display:block;margin-top:10px;font-size:11px;opacity:.7}";
+
+  var style = document.createElement("style");
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  var box = document.createElement("div");
+  box.className = "shop-guide";
+  box.setAttribute("role", "status");
+  box.innerHTML =
+    "<p><b>← →</b><span>옆으로 넘기면 다른 가게로 이동해요</span></p>" +
+    "<p><b>↗</b><span>오른쪽 위 글씨를 누르면 지도로 돌아가요</span></p>" +
+    "<small>눌러서 닫기</small>";
+  document.body.appendChild(box);
+
+  function close() {
+    box.classList.remove("show");
+    setTimeout(function () {
+      if (box.parentNode) box.parentNode.removeChild(box);
+    }, 450);
+  }
+
+  box.addEventListener("click", close);
+  setTimeout(function () { box.classList.add("show"); }, 700);
+  setTimeout(close, 6500);
+
+  try {
+    localStorage.setItem(KEY, "1");
+  } catch (e) {}
+})();

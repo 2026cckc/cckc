@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#E1041B">
+  <title>신흥시장에서 해방촌까지 | with 코카-콜라</title>
+  <meta name="description" content="신흥시장에서 해방촌까지, 한 골목에서 2년 with 코카-콜라">
+
+  <!-- 글꼴: Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+      /* 화면 폭 (컴퓨터에서는 폰 화면 폭으로 제한) */
+      --cw: min(100vw, 540px);
+      /* 디자인 기준(가로 390px)의 1px. 화면 폭에 맞춰 자동으로 커지고 작아짐 */
+      --u: calc(var(--cw) / 390);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      background: var(--red);
+    }
+
+    body {
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-weight: 700;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+      overflow: hidden;
+    }
+
+    p,
+    h1,
+    h2,
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ---------- 3장을 옆으로 넘기는 틀 ---------- */
+    .slides {
+      display: flex;
+      width: var(--cw);
+      height: 100vh;
+      height: 100svh;
+      margin: 0 auto;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+
+    .slides::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      position: relative;
+      flex: 0 0 100%;
+      height: 100%;
+      overflow-y: auto;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      padding:
+        calc(env(safe-area-inset-top, 0px) + var(--u) * 22)
+        calc(var(--u) * 24)
+        calc(env(safe-area-inset-bottom, 0px) + var(--u) * 64);
+    }
+
+    /* 색 두 가지: 빨강 바탕 / 아이보리 바탕 */
+    .red {
+      background: var(--red);
+      color: var(--bg);
+    }
+
+    .ivory {
+      background: var(--bg);
+      color: var(--red);
+    }
+
+    /* 맨 위 작은 줄: 왼쪽 쪽수, 오른쪽 브랜드 */
+    .top {
+      display: flex;
+      justify-content: space-between;
+      font-size: calc(var(--u) * 12);
+      letter-spacing: -0.02em;
+    }
+
+    /* 맨 아래 쪽 표시 점 (화면에 고정) */
+    .dots {
+      position: fixed;
+      z-index: 10;
+      left: 50%;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + var(--u) * 26);
+      display: flex;
+      gap: 8px;
+      transform: translateX(-50%);
+    }
+
+    .dots button {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.35;
+      cursor: pointer;
+      transition: opacity 0.2s, width 0.2s, border-radius 0.2s;
+    }
+
+    .dots button[aria-current="true"] {
+      width: 22px;
+      border-radius: 4px;
+      opacity: 1;
+    }
+
+    /* 점 색은 지금 보이는 장의 글자색을 따라감 */
+    .dots[data-tone="red"] {
+      color: var(--bg);
+    }
+
+    .dots[data-tone="ivory"] {
+      color: var(--red);
+    }
+
+    /* ---------- 1장: 표지 ---------- */
+    .cover .line {
+      flex: 1;
+      width: calc(var(--u) * 3);
+      min-height: calc(var(--u) * 60);
+      margin: calc(var(--u) * 28) 0 calc(var(--u) * 28) calc(var(--u) * 2);
+      background: var(--bg);
+      transform-origin: top;
+    }
+
+    .cover h1 {
+      font-size: calc(var(--u) * 50);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.055em;
+    }
+
+    .cover .with {
+      display: inline-block;
+      margin-top: calc(var(--u) * 20);
+      padding: calc(var(--u) * 5) calc(var(--u) * 9);
+      background: var(--bg);
+      color: var(--red);
+      font-size: calc(var(--u) * 18);
+      letter-spacing: -0.03em;
+    }
+
+    .cover .hint {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--u) * 8);
+      margin-top: calc(var(--u) * 46);
+      font-size: calc(var(--u) * 13);
+      letter-spacing: -0.02em;
+      opacity: 0.75;
+    }
+
+    .cover .hint span {
+      display: inline-block;
+      animation: nudge 1.6s ease-in-out infinite;
+    }
+
+    /* ---------- 2장: 인트로 + 프로젝트 소개 ---------- */
+    .label {
+      width: fit-content;
+      padding: calc(var(--u) * 4) calc(var(--u) * 8);
+      font-size: calc(var(--u) * 13);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .ivory .label {
+      background: var(--red);
+      color: var(--bg);
+    }
+
+    .red .label {
+      background: var(--bg);
+      color: var(--red);
+    }
+
+    .story .label {
+      margin-top: calc(var(--u) * 54);
+    }
+
+    .story .lead {
+      margin-top: calc(var(--u) * 18);
+      font-size: calc(var(--u) * 23);
+      font-weight: 800;
+      line-height: 1.42;
+      letter-spacing: -0.045em;
+    }
+
+    .story .rule {
+      width: calc(var(--u) * 40);
+      height: calc(var(--u) * 3);
+      margin: calc(var(--u) * 34) 0 calc(var(--u) * 30);
+      background: var(--red);
+    }
+
+    .story .body p {
+      font-size: calc(var(--u) * 14.5);
+      line-height: 1.75;
+      letter-spacing: -0.03em;
+    }
+
+    .story .body p + p {
+      margin-top: calc(var(--u) * 14);
+    }
+
+    .story .body strong {
+      font-weight: 800;
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+    }
+
+    /* ---------- 3장: 타임라인 ---------- */
+    .timeline .label {
+      margin-top: calc(var(--u) * 54);
+    }
+
+    .timeline ol {
+      position: relative;
+      list-style: none;
+      margin-top: calc(var(--u) * 30);
+      padding-left: calc(var(--u) * 30);
+    }
+
+    /* 세로로 이어지는 길 */
+    .timeline ol::before {
+      content: "";
+      position: absolute;
+      left: calc(var(--u) * 6);
+      top: calc(var(--u) * 8);
+      bottom: calc(var(--u) * 8);
+      width: calc(var(--u) * 3);
+      background: var(--bg);
+      transform-origin: top;
+    }
+
+    .timeline li {
+      position: relative;
+      padding-bottom: calc(var(--u) * 26);
+    }
+
+    .timeline li:last-child {
+      padding-bottom: 0;
+    }
+
+    /* 길 위의 점 */
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: calc(var(--u) * -29);
+      top: calc(var(--u) * 3);
+      width: calc(var(--u) * 13);
+      height: calc(var(--u) * 13);
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 calc(var(--u) * 3) var(--bg) inset;
+    }
+
+    .timeline .date {
+      font-size: calc(var(--u) * 13);
+      letter-spacing: -0.01em;
+      opacity: 0.8;
+    }
+
+    .timeline .tag {
+      margin-top: calc(var(--u) * 4);
+      font-size: calc(var(--u) * 19);
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.04em;
+    }
+
+    .timeline .what {
+      margin-top: calc(var(--u) * 3);
+      font-size: calc(var(--u) * 14);
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
+
+    /* 마지막 = 지금 여기 */
+    .timeline li.now::before {
+      background: var(--bg);
+      box-shadow: none;
+      animation: pulse 1.8s ease-out infinite;
+    }
+
+    .timeline .here {
+      display: inline-block;
+      margin-left: calc(var(--u) * 6);
+      padding: calc(var(--u) * 2) calc(var(--u) * 6);
+      background: var(--bg);
+      color: var(--red);
+      font-size: calc(var(--u) * 11);
+      vertical-align: calc(var(--u) * 2);
+      letter-spacing: -0.02em;
+    }
+
+    /* 지도로 가는 버튼 */
+    .go {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding: calc(var(--u) * 17) calc(var(--u) * 20);
+      background: var(--bg);
+      color: var(--red);
+      font-size: calc(var(--u) * 17);
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.15s ease;
+    }
+
+    .timeline ol {
+      margin-bottom: calc(var(--u) * 34);
+    }
+
+    .go:active {
+      transform: scale(0.98);
+    }
+
+    .go .arrow {
+      transition: transform 0.2s ease;
+    }
+
+    @media (hover: hover) {
+      .go:hover .arrow {
+        transform: translateX(6px);
+      }
+    }
+
+    .go:focus-visible,
+    .dots button:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+    }
+
+    /* ---------- 움직임 ---------- */
+    /* 각 장이 화면에 들어올 때 글자가 아래에서 살짝 떠오름 */
+    .rise {
+      opacity: 0;
+      transform: translateY(calc(var(--u) * 18));
+    }
+
+    .slide.on .rise {
+      animation: rise 0.7s cubic-bezier(.2, .7, .2, 1) forwards;
+      animation-delay: calc(var(--d, 0) * 1s);
+    }
+
+    .slide.on .line,
+    .slide.on ol::before {
+      animation: draw 1.1s cubic-bezier(.6, 0, .2, 1) both;
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes draw {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes nudge {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(calc(var(--u) * 6));
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(243, 242, 236, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 0 calc(var(--u) * 12) rgba(243, 242, 236, 0);
+      }
+    }
+
+    /* 움직임 줄이기 설정을 켠 사람에게는 효과 없이 바로 보여줌 */
+    @media (prefers-reduced-motion: reduce) {
+      .slides {
+        scroll-behavior: auto;
+      }
+
+      .rise {
+        opacity: 1;
+        transform: none;
+      }
+
+      .slide.on .rise,
+      .slide.on .line,
+      .slide.on ol::before,
+      .cover .hint span,
+      .timeline li.now::before {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="slides" id="slides">
+
+    <!-- ===== 1장: 표지 (통합 타이틀) ===== -->
+    <section class="slide red cover" aria-label="1 / 3 표지">
+      <div class="top">
+        <span>01 / 03</span>
+        <span>코카-콜라 X 신흥시장 · 해방촌</span>
+      </div>
+
+      <div class="line" aria-hidden="true"></div>
+
+      <h1 class="rise" style="--d:0.2">
+        신흥시장에서<br>
+        해방촌까지,<br>
+        한 골목에서 2년
+      </h1>
+
+      <p><span class="with rise" style="--d:0.45">with 코카-콜라</span></p>
+
+      <p class="hint rise" style="--d:0.8">옆으로 넘겨보세요 <span aria-hidden="true">→</span></p>
+    </section>
+
+    <!-- ===== 2장: 인트로 + 프로젝트 소개 ===== -->
+    <section class="slide ivory story" aria-label="2 / 3 프로젝트 소개">
+      <div class="top">
+        <span>02 / 03</span>
+        <span>코카-콜라 X 신흥시장 · 해방촌</span>
+      </div>
+
+      <h2 class="label rise" style="--d:0.05">프로젝트 소개</h2>
+
+      <p class="lead rise" style="--d:0.15">
+        코카-콜라는 1968년 한국에서 첫 생산을 시작한 이후, 지난 58년 동안 전국 곳곳에서 사람들의 일상과 함께해왔다.
+        제품을 만드는 생산 현장부터 동네의 작은 가게와 식당까지.
+      </p>
+
+      <div class="rule rise" style="--d:0.3" aria-hidden="true"></div>
+
+      <div class="body rise" style="--d:0.4">
+        <p>
+          코카-콜라는 작년 서울 용산구 해방촌 신흥시장 상인들과 함께 골목과 가게를 새롭게 단장하는 것으로
+          로컬 프로젝트를 시작했고, 올해 2026년 9월, 시장을 만들어온 상인들의 삶과 시간을 기록한 전시
+          <strong>〈신흥시장 사람들 with 코카-콜라〉</strong>를 열었다.
+        </p>
+        <p>
+          시장 상인들과 쌓은 인연은 마을로 넓어져 해방촌 상인들이 직접 만드는 동네 축제
+          <strong>‘해방위크’</strong>로 이어졌으며, 신흥로를 따라 이어지는 해방촌 골목 가게 18곳과의 협업으로 넘어갔다.
+        </p>
+        <p>
+          가게마다 사장님이 필요로 했던 것에서 출발해 서로 다른 모습으로 다듬어진 이 골목은,
+          이제 신흥시장 전시에서 해방촌까지 걸어서 이어지는 하나의 <strong>‘길’</strong>이 됐다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 3장: 타임라인 ===== -->
+    <section class="slide red timeline" aria-label="3 / 3 타임라인">
+      <div class="top">
+        <span>03 / 03</span>
+        <span>코카-콜라 X 신흥시장 · 해방촌</span>
+      </div>
+
+      <h2 class="label rise" style="--d:0.05">타임라인</h2>
+
+      <ol>
+        <li class="rise" style="--d:0.2">
+          <p class="date">2025</p>
+          <p class="tag">시즌1 · 공간</p>
+          <p class="what">신흥시장 가게·골목 공간 브랜딩</p>
+        </li>
+        <li class="rise" style="--d:0.32">
+          <p class="date">2026</p>
+          <p class="tag">에피 어워드 코리아</p>
+          <p class="what">그랜드 에피 — 2년 연속 최고상</p>
+        </li>
+        <li class="rise" style="--d:0.44">
+          <p class="date">2026.9.1</p>
+          <p class="tag">시즌2 · 사람</p>
+          <p class="what">전시 〈신흥시장 사람들 with 코카-콜라〉 오픈</p>
+        </li>
+        <li class="rise" style="--d:0.56">
+          <p class="date">2026.9.10~13</p>
+          <p class="tag">해방위크 · 축제</p>
+          <p class="what">주민 주도 축제 파트너 참여, 신흥로 20 벽화</p>
+        </li>
+        <li class="rise now" style="--d:0.68">
+          <p class="date">2026.10.19</p>
+          <p class="tag">해방촌 · 동네<span class="here">지금 여기</span></p>
+          <p class="what">해방촌 골목 가게 18곳 협업 첫 공개</p>
+        </li>
+      </ol>
+
+      <!-- 신흥시장 지도로 이동 -->
+      <a class="go rise" style="--d:0.85" href="map-sinheung.html">
+        <span>신흥시장 지도 보기</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- 몇 번째 장인지 보여주는 점 (누르면 그 장으로 이동) -->
+  <nav class="dots" id="dots" data-tone="red" aria-label="페이지 이동">
+    <button type="button" aria-label="1장 표지" aria-current="true"></button>
+    <button type="button" aria-label="2장 프로젝트 소개"></button>
+    <button type="button" aria-label="3장 타임라인"></button>
+  </nav>
+
+  <script>
+    (function () {
+      // 마지막 장에서 한 번 더 넘기면 갈 페이지
+      var AFTER_LAST = "map-sinheung.html";
+
+      var box = document.getElementById("slides");
+      var slides = Array.prototype.slice.call(box.querySelectorAll(".slide"));
+      var dots = document.getElementById("dots");
+      var buttons = Array.prototype.slice.call(dots.querySelectorAll("button"));
+      var current = 0;
+
+      function show(i) {
+        current = i;
+        slides[i].classList.add("on");
+        buttons.forEach(function (b, k) {
+          b.setAttribute("aria-current", k === i ? "true" : "false");
+        });
+        dots.setAttribute("data-tone", slides[i].classList.contains("ivory") ? "ivory" : "red");
+      }
+
+      function goTo(i) {
+        if (i < 0 || i >= slides.length) return;
+        box.scrollTo({ left: i * box.clientWidth });
+      }
+
+      // 지금 보이는 장 알아내기
+      box.addEventListener("scroll", function () {
+        var i = Math.round(box.scrollLeft / box.clientWidth);
+        if (i !== current) show(i);
+      }, { passive: true });
+
+      buttons.forEach(function (b, k) {
+        b.addEventListener("click", function () { goTo(k); });
+      });
+
+      // 컴퓨터: 키보드 ← → 로 넘기기
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") {
+          if (current === slides.length - 1) location.href = AFTER_LAST;
+          else goTo(current + 1);
+        }
+        if (e.key === "ArrowLeft") goTo(current - 1);
+      });
+
+      // 마지막 장에서 왼쪽으로 한 번 더 밀면 지도로
+      var sx = 0, sy = 0, t = 0;
+      box.addEventListener("touchstart", function (e) {
+        sx = e.touches[0].clientX;
+        sy = e.touches[0].clientY;
+        t = Date.now();
+      }, { passive: true });
+
+      box.addEventListener("touchend", function (e) {
+        if (current !== slides.length - 1) return;
+        var dx = e.changedTouches[0].clientX - sx;
+        var dy = e.changedTouches[0].clientY - sy;
+        if (dx < -60 && Math.abs(dx) > Math.abs(dy) * 1.5 && Date.now() - t < 800) {
+          location.href = AFTER_LAST;
+        }
+      }, { passive: true });
+
+      // 뒤로가기로 돌아왔을 때 마지막 장 그대로 보이게
+      window.addEventListener("pageshow", function () {
+        show(Math.round(box.scrollLeft / box.clientWidth));
+      });
+
+      show(0);
+    })();
+  </script>
+</body>
+</html>

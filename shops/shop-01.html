@@ -1,17 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F3F2EC">
+  <title>H5NG | COCA-COLA × 신흥시장</title>
 
-  <title>01 — H5NG</title>
+  <!-- 글꼴: Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
   <style>
     :root {
       --bg: #F3F2EC;
       --red: #E1041B;
+      /* 디자인 시안(가로 1080px)의 1px. 화면 폭에 맞춰 자동으로 커지고 작아짐 */
+      --u: calc(min(100vw, 540px) / 1080);
     }
 
     * {
@@ -21,171 +24,126 @@
     html,
     body {
       margin: 0;
-      min-height: 100%;
       background: var(--bg);
     }
 
     body {
       color: var(--red);
-      font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* 기본 디자인 캔버스 */
-    .page {
-      position: relative;
-      width: 100%;
-      max-width: 540px;
-      aspect-ratio: 1080 / 1920;
-      margin: 0 auto;
-      overflow: hidden;
-      background: var(--bg);
-      container-type: inline-size;
-    }
-
-    /* 이름표 */
-    .name-label {
-      position: absolute;
-      top: 7%;
-      left: 10.35%;
-      margin: 0;
-      padding: 0.22em 0.18em 0.28em;
-      background: var(--red);
-      color: var(--bg);
-      font-size: 2.55cqw;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.06em;
-    }
-
-    /* 메인 타이틀 */
-    .shop-name {
-      position: absolute;
-      top: 11%;
-      left: 9.4%;
-      margin: 0;
-      font-size: 17.7cqw;
-      font-weight: 800;
-      line-height: 0.9;
-      letter-spacing: -0.085em;
-      white-space: nowrap;
-    }
-
-    /* 소개 문구 */
-    .intro {
-      position: absolute;
-      top: 22%;
-      left: 9.5%;
-      width: 81%;
-      margin: 0;
-      font-size: 2.45cqw;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
       font-weight: 700;
-      line-height: 1.8;
-      letter-spacing: -0.055em;
+      -webkit-font-smoothing: antialiased;
       word-break: keep-all;
     }
 
-    /* 매장 사진 */
-    .shop-photo {
-      position: absolute;
-      top: 36%;
-      left: 23%;
-      width: 67%;
-      height: 36%;
-      margin: 0;
-      overflow: hidden;
+    .page {
+      position: relative;
+      width: min(100vw, 540px);
+      margin: 0 auto;
+      padding:
+        calc(var(--u) * 300 + env(safe-area-inset-top, 0px))
+        calc(var(--u) * 105)
+        calc(var(--u) * 160 + env(safe-area-inset-bottom, 0px))
+        calc(var(--u) * 102);
     }
 
-    .shop-photo img {
+    /* 오른쪽 위 작은 글씨 */
+    .brand {
+      margin: 0 0 calc(var(--u) * 6);
+      text-align: right;
+      font-size: calc(var(--u) * 24);
+      letter-spacing: -0.02em;
+    }
+
+    /* 빨간 박스 이름표 */
+    .owner {
+      display: inline-block;
+      margin: 0;
+      padding: calc(var(--u) * 5) calc(var(--u) * 9);
+      background: var(--red);
+      color: var(--bg);
+      font-size: calc(var(--u) * 30);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    /* 큰 가게 이름 */
+    .name {
+      margin: calc(var(--u) * 6) 0 0 calc(var(--u) * -4);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: calc(var(--u) * 178);
+      font-weight: 700;
+      line-height: 0.82;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      margin: calc(var(--u) * 40) 0 0;
+      font-size: calc(var(--u) * 27);
+      letter-spacing: -0.03em;
+    }
+
+    .desc {
+      margin: calc(var(--u) * 50) 0 0;
+      font-size: calc(var(--u) * 26);
+      line-height: 1.55;
+      letter-spacing: -0.03em;
+    }
+
+    /* 가게 사진 (오른쪽 정렬) */
+    .photo {
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+      width: calc(var(--u) * 668);
+      aspect-ratio: 668 / 898;
+      margin: calc(var(--u) * 85) 0 0 auto;
+      object-fit: cover;
     }
 
     /* 인용문 */
     .quote {
-      position: absolute;
-      top: 73%;
-      right: 10.1%;
-      width: 70%;
-      margin: 0;
-      font-size: 5.2cqw;
-      font-weight: 800;
-      line-height: 1.35;
-      letter-spacing: -0.075em;
+      margin: calc(var(--u) * 12) 0 0;
       text-align: right;
-      word-break: keep-all;
+      font-size: calc(var(--u) * 57);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
     }
 
-    /* 하단 매장 라벨 */
-    .footer-label {
-      position: absolute;
-      top: 91%;
-      left: 10.2%;
+    /* 아래 번호 + 분류 */
+    .footer {
       display: flex;
-      align-items: baseline;
-      gap: 2.5cqw;
-      margin: 0;
-      font-size: 2.25cqw;
-      font-weight: 700;
-      line-height: 1.5;
-      letter-spacing: -0.045em;
-      white-space: nowrap;
-    }
-
-    /* 텍스트 선택 가능 */
-    .page,
-    .page * {
-      user-select: text;
-      -webkit-user-select: text;
-    }
-
-    /* 화면이 넓은 모바일에서는 화면 높이에 맞춤 */
-    @media (max-width: 699px) and (min-aspect-ratio: 9/19) {
-      .page {
-        width: auto;
-        height: 100svh;
-        max-width: none;
-        aspect-ratio: auto;
-      }
-    }
-
-    /* PC에서는 가운데 콘텐츠와 양옆 배경 */
-    @media (min-width: 700px) {
-      .page {
-        width: min(100%, 540px);
-        height: auto;
-        aspect-ratio: 1080 / 1920;
-      }
+      gap: calc(var(--u) * 26);
+      margin: calc(var(--u) * 205) 0 0;
+      font-size: calc(var(--u) * 22);
+      letter-spacing: -0.02em;
     }
   </style>
 </head>
 
 <body>
-  <main class="page" id="shop-01">
+  <main class="page">
 
-    <p class="name-label">홍석우 사장</p>
+    <p class="brand">코카-콜라 X 신흥시장</p>
 
-    <h1 class="shop-name">H5NG</h1>
+    <p class="owner">홍석우 사장</p>
+    <h1 class="name">H5NG</h1>
 
-    <p class="intro">
-      3대가 지켜온 자리에서 신흥시장에 새로운 감각을 더하는<br>
-      아메리칸 차이니즈 레스토랑.<br>
-      해방촌에서 나고 자라, 3대째 가족이 지켜온 자리에서 가게를 이어간다.
+    <p class="subtitle">3대가 지켜온 자리에서</p>
+
+    <p class="desc">
+      신흥시장에 새로운 감각을 더하는 아메리칸 차이니즈 레스토랑.<br>
+      해방촌에서 나고 자라, 3대째 가족이 지켜온 자리에서 가게를 이어가고 있다.
     </p>
 
-    <figure class="shop-photo">
-      <img src="01.png" alt="H5NG 매장 사진">
-    </figure>
+    <img class="photo" src="shop-01.png" alt="H5NG 주방에서 요리하는 홍석우 사장">
 
     <p class="quote">
-      "시장이 살아나야<br>
-      동네도 살아납니다."
+      “가족의 뿌리가 있는,<br>
+      가장 익숙한 이곳에서<br>
+      ‘홍’이라는 이름을 걸고<br>
+      새로운 도전을 하고 싶었어요.”
     </p>
 
-    <p class="footer-label">
+    <p class="footer">
       <span>01</span>
       <span>아메리칸 차이니즈</span>
     </p>

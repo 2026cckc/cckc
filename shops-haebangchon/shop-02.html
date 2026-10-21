@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>베제투스 | COCA-COLA × 해방촌</title>
+
+  <!-- 글꼴: Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+      /* 디자인 시안(가로 920px)의 1px. 화면 폭에 맞춰 자동으로 커지고 작아짐 */
+      --u: calc(min(100vw, 540px) / 920);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: var(--bg);
+    }
+
+    body {
+      color: var(--red);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-weight: 700;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+    }
+
+    /* 페이지 길이를 시안에 맞춰서, 맨 아래 번호가 항상 같은 위치에 오게 함 */
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: min(100vw, 540px);
+      min-height: calc(var(--u) * 1840);
+      margin: 0 auto;
+      padding:
+        calc(var(--u) * 95 + env(safe-area-inset-top, 0px))
+        calc(var(--u) * 88)
+        calc(var(--u) * 136 + env(safe-area-inset-bottom, 0px))
+        calc(var(--u) * 87);
+    }
+
+    p,
+    h1 {
+      margin: 0;
+    }
+
+    /* 오른쪽 정렬 표시 */
+    .r {
+      text-align: right;
+    }
+
+    /* 오른쪽 위 작은 글씨 (누르면 해방촌 지도로) */
+    .brand {
+      text-align: right;
+      font-size: calc(var(--u) * 20);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .brand a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 빨간 박스 이름표 */
+    .owner {
+      width: fit-content;
+      padding: calc(var(--u) * 4) calc(var(--u) * 8);
+      background: var(--red);
+      color: var(--bg);
+      font-size: calc(var(--u) * 25);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .owner.r {
+      margin-left: auto;
+    }
+
+    /* 큰 가게 이름 */
+    .name {
+      font-size: calc(var(--u) * 130);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    /* 가게 이름 옆 작은 글씨, 예: (+모로코코) */
+    .name small {
+      font-size: calc(var(--u) * 30);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-left: calc(var(--u) * 6);
+    }
+
+    .subtitle {
+      font-size: calc(var(--u) * 23);
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
+
+    .desc {
+      font-size: calc(var(--u) * 22);
+      line-height: 1.55;
+      letter-spacing: -0.03em;
+    }
+
+    /* 인용문 */
+    .quote {
+      font-size: calc(var(--u) * 47);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    /* 왼쪽 정렬 인용문은 첫 따옴표만 앞으로 튀어나오게 */
+    .quote:not(.r) {
+      padding-left: calc(var(--u) * 18);
+      text-indent: calc(var(--u) * -18);
+    }
+
+    /* 가게 사진 */
+    .photo {
+      display: block;
+      object-fit: cover;
+    }
+
+    .photo.r {
+      margin-left: auto;
+    }
+
+    /* 사진 옆에 글이 붙는 배치 */
+    .row {
+      display: flex;
+      align-items: flex-end;
+      gap: calc(var(--u) * 16);
+    }
+
+    .row .photo {
+      flex: none;
+    }
+
+    /* 아래 번호 + 분류 (모든 페이지 같은 위치) */
+    .footer {
+      display: flex;
+      gap: calc(var(--u) * 22);
+      margin-top: auto;
+      padding-top: calc(var(--u) * 90);
+      font-size: calc(var(--u) * 19);
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- 누르면 해방촌 지도로 돌아감 -->
+    <p class="brand"><a href="../map-haebangchon.html">코카-콜라 X 해방촌</a></p>
+
+    <p class="owner" style="margin-top: calc(var(--u) * 5);">정다정 사장</p>
+    <h1 class="name" style="margin-top: calc(var(--u) * 5);">베제투스</h1>
+
+    <p class="quote" style="margin-top: calc(var(--u) * 30);">
+      “채식은 별나거나 어려운 게 아니에요.<br>
+      특히 코카-콜라와 함께라면!”
+    </p>
+
+    <img class="photo r" src="shop-02.png" alt="베제투스 외벽의 초록 네온사인"
+         style="width: calc(var(--u) * 677); aspect-ratio: 677 / 364; margin-top: calc(var(--u) * 211);">
+    <p class="subtitle r" style="margin-top: calc(var(--u) * 88);">채식의 즐거운 발견</p>
+
+    <p class="desc r" style="margin-top: calc(var(--u) * 34);">
+      라틴어로 ‘건강하고 활기찬’이라는 이름처럼,<br>
+      비건을 어렵거나 특별한 음식이 아닌<br>
+      누구나 맛있게 즐길 수 있는 한 끼로 선보이는 레스토랑.<br>
+      신흥시장 때부터 코카-콜라와의 협업을 손꼽아 기다려온 사장님.<br>
+      이번 협업으로 가게 외관을 산뜻한 초록빛으로 바꾸며<br>
+      베제투스만의 새로운 분위기를 완성했다.
+    </p>
+
+    <p class="footer">
+      <span>02</span>
+      <span>비건 레스토랑</span>
+    </p>
+
+  </main>
+
+  <!-- 좌우로 넘겨서 다른 가게로 이동 -->
+  <script src="swipe.js"></script>
+</body>
+</html>

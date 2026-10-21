@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>카사블랑카 | COCA-COLA × 해방촌</title>
+
+  <!-- 글꼴: Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+      /* 디자인 시안(가로 920px)의 1px. 화면 폭에 맞춰 자동으로 커지고 작아짐 */
+      --u: calc(min(100vw, 540px) / 920);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: var(--bg);
+    }
+
+    body {
+      color: var(--red);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-weight: 700;
+      -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
+    }
+
+    /* 페이지 길이를 시안에 맞춰서, 맨 아래 번호가 항상 같은 위치에 오게 함 */
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: min(100vw, 540px);
+      min-height: calc(var(--u) * 1840);
+      margin: 0 auto;
+      padding:
+        calc(var(--u) * 95 + env(safe-area-inset-top, 0px))
+        calc(var(--u) * 88)
+        calc(var(--u) * 136 + env(safe-area-inset-bottom, 0px))
+        calc(var(--u) * 87);
+    }
+
+    p,
+    h1 {
+      margin: 0;
+    }
+
+    /* 오른쪽 정렬 표시 */
+    .r {
+      text-align: right;
+    }
+
+    /* 오른쪽 위 작은 글씨 (누르면 해방촌 지도로) */
+    .brand {
+      text-align: right;
+      font-size: calc(var(--u) * 20);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .brand a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 빨간 박스 이름표 */
+    .owner {
+      width: fit-content;
+      padding: calc(var(--u) * 4) calc(var(--u) * 8);
+      background: var(--red);
+      color: var(--bg);
+      font-size: calc(var(--u) * 25);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .owner.r {
+      margin-left: auto;
+    }
+
+    /* 큰 가게 이름 */
+    .name {
+      font-size: calc(var(--u) * 130);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    /* 가게 이름 옆 작은 글씨, 예: (+모로코코) */
+    .name small {
+      font-size: calc(var(--u) * 30);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-left: calc(var(--u) * 6);
+    }
+
+    .subtitle {
+      font-size: calc(var(--u) * 23);
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
+
+    .desc {
+      font-size: calc(var(--u) * 22);
+      line-height: 1.55;
+      letter-spacing: -0.03em;
+    }
+
+    /* 인용문 */
+    .quote {
+      font-size: calc(var(--u) * 47);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    /* 왼쪽 정렬 인용문은 첫 따옴표만 앞으로 튀어나오게 */
+    .quote:not(.r) {
+      padding-left: calc(var(--u) * 18);
+      text-indent: calc(var(--u) * -18);
+    }
+
+    /* 가게 사진 */
+    .photo {
+      display: block;
+      object-fit: cover;
+    }
+
+    .photo.r {
+      margin-left: auto;
+    }
+
+    /* 사진 옆에 글이 붙는 배치 */
+    .row {
+      display: flex;
+      align-items: flex-end;
+      gap: calc(var(--u) * 16);
+    }
+
+    .row .photo {
+      flex: none;
+    }
+
+    /* 아래 번호 + 분류 (모든 페이지 같은 위치) */
+    .footer {
+      display: flex;
+      gap: calc(var(--u) * 22);
+      margin-top: auto;
+      padding-top: calc(var(--u) * 90);
+      font-size: calc(var(--u) * 19);
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- 누르면 해방촌 지도로 돌아감 -->
+    <p class="brand"><a href="../map-haebangchon.html">코카-콜라 X 해방촌</a></p>
+
+    <p class="owner" style="margin-top: calc(var(--u) * 6);">나시리 와히드 셰프</p>
+    <h1 class="name" style="margin-top: calc(var(--u) * 4);">카사블랑카<small>(+모로코코)</small></h1>
+    <p class="subtitle" style="margin-top: calc(var(--u) * 20);">한 입 가득, 모로코의 맛</p>
+
+    <p class="desc" style="margin-top: calc(var(--u) * 35);">
+      따끈한 바게트에 치킨과 양고기, 채소 등을 푸짐하게 채워<br>
+      모로코 특유의 풍미를 전하는 샌드위치 전문점<br>
+      16년 전 해방촌에 자리 잡았다.<br>
+      샌드위치 가게에 이어 길 건너편에 모로코 가정식 식당도 열며,<br>
+      고향의 맛과 문화를 전하고 있다.
+    </p>
+
+    <img class="photo" src="shop-09.png" alt="카사블랑카 가게 앞 표지판과 아치형 창"
+         style="width: calc(var(--u) * 743); aspect-ratio: 743 / 493; margin-top: calc(var(--u) * 107);">
+
+    <p class="quote" style="margin-top: calc(var(--u) * 45);">
+      “코카-콜라와의 협업은 단순히<br>
+      가게가 달라지는 경험이 아니었어요.<br>
+      함께한다는 것의 든든함을<br>
+      느끼게 해줬어요.”
+    </p>
+
+    <p class="footer">
+      <span>09</span>
+      <span>모로코 샌드위치</span>
+    </p>
+
+  </main>
+
+  <!-- 좌우로 넘겨서 다른 가게로 이동 -->
+  <script src="swipe.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3F2EC">
+  <title>COCA-COLA × 해방촌</title>
+
+  <!-- 글꼴: Pretendard -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    :root {
+      --bg: #F3F2EC;
+      --red: #E1041B;
+      /* 지도 이미지 비율: 1166 x 2480 */
+      --ratio: 0.4702;
+      /* 화면 폭 (컴퓨터에서는 폰 화면 폭으로 제한) */
+      --cw: min(100vw, 540px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      color: var(--red);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      overflow: hidden;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* 화면 한 장 크기의 틀. 지도는 이 안을 꽉 채우고 넘치는 부분은 잘림 */
+    .page {
+      position: relative;
+      width: var(--cw);
+      height: 100vh;
+      height: 100svh;
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* 지도: 화면을 빈틈없이 덮도록 크기를 맞추고 가운데 정렬 */
+    .map-stage {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: max(var(--cw), 100vh * var(--ratio));
+      width: max(var(--cw), 100svh * var(--ratio));
+      aspect-ratio: 1166 / 2480;
+      transform: translate(-50%, -50%);
+    }
+
+    .map-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    /* 위쪽 글자가 지도와 겹쳐도 잘 보이게 살짝 흐려지는 띠 */
+    .page::before {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      inset: 0 0 auto;
+      height: calc(env(safe-area-inset-top, 0px) + 64px);
+      background: linear-gradient(var(--bg) 35%, rgba(243, 242, 236, 0));
+      pointer-events: none;
+    }
+
+    /* 오른쪽 위 작은 글씨 */
+    .title {
+      position: absolute;
+      z-index: 5;
+      top: calc(env(safe-area-inset-top, 0px) + 18px);
+      right: 18px;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    /* 숫자 핀: 좌표는 핀의 뾰족한 끝 기준 */
+    .pin {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 6.8%;
+      aspect-ratio: 54 / 70;
+      transform: translate(-50%, -100%);
+      transform-origin: 50% 100%;
+      transition: transform 0.12s ease;
+      display: block;
+      z-index: 3;
+      color: var(--red);
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pin svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .pin-number {
+      fill: #FFFFFF;
+      font-family: "Pretendard", Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .pin:active {
+      transform: translate(-50%, -100%) scale(0.95);
+    }
+
+    @media (hover: hover) {
+      .pin:hover {
+        transform: translate(-50%, -100%) scale(1.08);
+      }
+    }
+
+    .pin:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    /* 작은 원: 좌표는 원의 중심 기준 (클릭 안 됨) */
+    .dot {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 2.4%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--red);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 핀 모양은 여기서 한 번만 정의하고, 아래 핀들이 이걸 가져다 씀 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="pin-shape" viewBox="0 0 54 70">
+      <path fill="currentColor"
+        d="M27 0 C12.1 0 0 12.1 0 27 C0 44 27 70 27 70 C27 70 54 44 54 27 C54 12.1 41.9 0 27 0 Z"/>
+    </symbol>
+  </svg>
+
+  <div class="page">
+
+    <div class="map-stage">
+
+      <img class="map-image" src="haebangchon-map.png" width="1166" height="2480"
+           alt="해방촌 코카-콜라 참여 매장 지도">
+
+      <!--
+        핀 추가/수정 방법:
+        - href : 눌렀을 때 갈 가게 페이지
+        - --x  : 왼쪽에서 몇 % (가로 위치)
+        - --y  : 위에서 몇 % (세로 위치, 핀 끝이 닿는 곳)
+        - 숫자 : <text> 안의 글자
+      -->
+      <a class="pin" href="shops-haebangchon/shop-01.html" style="--x:54.3%; --y:10.5%;" aria-label="해방촌 가게 01">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">01</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-02.html" style="--x:58.7%; --y:14.2%;" aria-label="해방촌 가게 02">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">02</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-04.html" style="--x:72.9%; --y:25.2%;" aria-label="해방촌 가게 04">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">04</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-05.html" style="--x:62.0%; --y:32.0%;" aria-label="해방촌 가게 05">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">05</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-09.html" style="--x:54.2%; --y:49.3%;" aria-label="해방촌 가게 09">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">09</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-10.html" style="--x:58.8%; --y:53.0%;" aria-label="해방촌 가게 10">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">10</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-12.html" style="--x:49.4%; --y:56.9%;" aria-label="해방촌 가게 12">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">12</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-14.html" style="--x:45.3%; --y:72.3%;" aria-label="해방촌 가게 14">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">14</text></svg>
+      </a>
+
+      <a class="pin" href="shops-haebangchon/shop-13.html" style="--x:36.5%; --y:76.2%;" aria-label="해방촌 가게 13">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">13</text></svg>
+      </a>
+
+      <!-- 작은 빨간 원 -->
+      <span class="dot" style="--x:60.0%; --y:16.4%;" aria-hidden="true"></span>
+      <span class="dot" style="--x:84.7%; --y:17.7%;" aria-hidden="true"></span>
+      <span class="dot" style="--x:57.7%; --y:41.0%;" aria-hidden="true"></span>
+      <span class="dot" style="--x:19.9%; --y:51.8%;" aria-hidden="true"></span>
+      <span class="dot" style="--x:56.2%; --y:56.8%;" aria-hidden="true"></span>
+      <span class="dot" style="--x:58.9%; --y:58.6%;" aria-hidden="true"></span>
+      <span class="dot" style="--x:36.5%; --y:91.8%;" aria-hidden="true"></span>
+
+    </div>
+
+    <h1 class="title">코카-콜라 X 해방촌</h1>
+
+  </div>
+</body>
+</html>

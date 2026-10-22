@@ -383,12 +383,29 @@
       z-index: 2;
       pointer-events: none;
     }
+    /* 맨 아래 고정 안내문 (작게) */
+    .footnote {
+      position: absolute;
+      z-index: 5;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      padding: 22px 18px calc(env(safe-area-inset-bottom, 0px) + 12px);
+      background: linear-gradient(rgba(243, 242, 236, 0), var(--bg) 45%);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+    }
+
     /* 아래쪽 안내: 잠깐 보였다가 사라짐 */
     .guide {
       position: absolute;
       z-index: 6;
       left: 50%;
-      bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 58px);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -524,6 +541,9 @@
       <li><span class="here" aria-current="page">신흥시장 지도 <small>지금 보는 지도</small></span></li>
       <li><a href="map-haebangchon.html">해방촌 지도 <small aria-hidden="true">→</small></a></li>
     </ul>
+
+    <!-- 맨 아래 안내문 -->
+    <p class="footnote">* 각 가게의 이야기를 확인한 후, 화면을 왼쪽으로 넘기면 해방촌 지도로 이어집니다.</p>
 
     <!-- 안내 문구 -->
     <p class="guide" id="guide" role="status">

@@ -118,9 +118,14 @@
   // 가게 페이지에서만 보여줌 (연결 페이지 등에서는 안 뜨게)
   if (!/shop-\d+\.html/.test(location.pathname)) return;
 
+  // 마지막 가게(11번)에서는 매번 "한 번 더 넘기면 해방촌으로" 안내
+  var isLast = /shop-11\.html/.test(location.pathname);
+
+  var seen = false;
   try {
-    if (localStorage.getItem(KEY)) return;
+    seen = !!localStorage.getItem(KEY);
   } catch (e) {}
+  if (seen && !isLast) return;
 
   var css =
     ".shop-guide{position:fixed;z-index:50;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);" +
@@ -141,10 +146,16 @@
   var box = document.createElement("div");
   box.className = "shop-guide";
   box.setAttribute("role", "status");
-  box.innerHTML =
-    "<p><b>← →</b><span>옆으로 넘기면 다른 가게로 이동해요</span></p>" +
-    "<p><b>↗</b><span>오른쪽 위 글씨를 누르면 지도로 돌아가요</span></p>" +
-    "<small>눌러서 닫기</small>";
+  var html = "";
+  if (!seen) {
+    html +=
+      "<p><b>← →</b><span>옆으로 넘기면 다른 가게로 이동해요</span></p>" +
+      "<p><b>↗</b><span>오른쪽 위 글씨를 누르면 지도로 돌아가요</span></p>";
+  }
+  if (isLast) {
+    html += "<p><b>←</b><span>신흥시장의 마지막 가게예요. 한 번 더 넘기면 해방촌 이야기로 이어져요</span></p>";
+  }
+  box.innerHTML = html + "<small>눌러서 닫기</small>";
   document.body.appendChild(box);
 
   function close() {

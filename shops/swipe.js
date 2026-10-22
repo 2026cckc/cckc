@@ -9,7 +9,7 @@
 */
 (function () {
   // 가게가 총 몇 개인지
-  var TOTAL = 10;
+  var TOTAL = 11;
 
   // 마지막 가게 다음에 갈 페이지 (shops 폴더 기준 주소)
   var AFTER_LAST = "../to-haebangchon.html";

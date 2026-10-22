@@ -343,6 +343,40 @@
       transform: translateX(-50%);
     }
 
+    /* 가게 이름을 조금 떨어뜨려 쓸 때 원과 이름을 잇는 얇은 선 */
+    .dot .lead {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: var(--len);
+      height: 1.5px;
+      background: var(--red);
+      transform-origin: 0 50%;
+      transform: rotate(var(--ang));
+    }
+
+    .dot .dname.at {
+      left: calc(50% + var(--ex));
+      top: calc(50% + var(--ey));
+      right: auto;
+      bottom: auto;
+    }
+
+    .dot .dname.at.l {
+      transform: translate(calc(-100% - 0.2em), -50%);
+    }
+
+    .dot .dname.at.r {
+      transform: translate(0.2em, -50%);
+    }
+
+    /* 핀과 자리가 겹치는 원은 핀 위에 보이게 (테두리로 구분) */
+    .dot.over {
+      z-index: 4;
+      width: 1.9%;
+      box-shadow: 0 0 0 0.14em var(--bg);
+    }
+
     /* 작은 원: 좌표는 원의 중심 기준 (클릭 안 됨) */
     .dot {
       position: absolute;
@@ -434,46 +468,49 @@
         <span class="name r" aria-hidden="true">굿니스클럽</span>
       </a>
 
-      <a class="pin" href="shops/shop-04.html" style="--x:62.7%; --y:84.6%;" aria-label="04 다모아식당">
+      <a class="pin" href="shops/shop-04.html" style="--x:49.5%; --y:70.9%;" aria-label="04 노가리공장">
         <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">04</text></svg>
+        <span class="name l" aria-hidden="true">노가리공장</span>
+      </a>
+
+      <a class="pin" href="shops/shop-05.html" style="--x:62.7%; --y:84.6%;" aria-label="05 다모아식당">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">05</text></svg>
         <span class="name r" aria-hidden="true">다모아식당</span>
       </a>
 
-      <a class="pin" href="shops/shop-05.html" style="--x:57.4%; --y:71.6%;" aria-label="05 훈육">
-        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">05</text></svg>
+      <a class="pin" href="shops/shop-06.html" style="--x:57.4%; --y:71.6%;" aria-label="06 훈육">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">06</text></svg>
         <span class="name r" aria-hidden="true">훈육</span>
       </a>
 
-      <a class="pin" href="shops/shop-06.html" style="--x:77.1%; --y:59.5%;" aria-label="06 해방촌 수제돈까스">
-        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">06</text></svg>
+      <a class="pin" href="shops/shop-07.html" style="--x:77.1%; --y:59.5%;" aria-label="07 해방촌 수제돈까스">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">07</text></svg>
         <span class="name r" aria-hidden="true">해방촌<br>수제돈까스</span>
       </a>
 
-      <a class="pin" href="shops/shop-07.html" style="--x:78.5%; --y:47.0%;" aria-label="07 돈키돈키">
-        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">07</text></svg>
+      <a class="pin" href="shops/shop-08.html" style="--x:78.5%; --y:47.0%;" aria-label="08 돈키돈키">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">08</text></svg>
         <span class="name l" aria-hidden="true">돈키돈키</span>
       </a>
 
-      <a class="pin" href="shops/shop-08.html" style="--x:30.0%; --y:49.0%;" aria-label="08 팟카파우">
-        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">08</text></svg>
+      <a class="pin" href="shops/shop-09.html" style="--x:30.0%; --y:49.0%;" aria-label="09 팟카파우">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">09</text></svg>
         <span class="name l" aria-hidden="true">팟카파우</span>
       </a>
 
-      <a class="pin" href="shops/shop-09.html" style="--x:49.3%; --y:44.8%;" aria-label="09 비스트로조조">
-        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">09</text></svg>
+      <a class="pin" href="shops/shop-10.html" style="--x:49.3%; --y:44.8%;" aria-label="10 비스트로조조">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">10</text></svg>
         <span class="name r" aria-hidden="true">비스트로조조</span>
       </a>
 
-      <a class="pin" href="shops/shop-10.html" style="--x:37.2%; --y:46.5%;" aria-label="10 해방촌닭">
-        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">10</text></svg>
+      <a class="pin" href="shops/shop-11.html" style="--x:37.2%; --y:46.5%;" aria-label="11 해방촌닭">
+        <svg viewBox="0 0 54 70" aria-hidden="true"><use href="#pin-shape"/><text class="pin-number" x="27" y="27" text-anchor="middle" dominant-baseline="central">11</text></svg>
         <span class="name t" aria-hidden="true">해방촌닭</span>
       </a>
 
       <!-- 작은 빨간 원 -->
-      <span class="dot" style="--x:57.5%; --y:29.4%;" aria-hidden="true"></span>
       <span class="dot" style="--x:58.2%; --y:39.1%;"><span class="dname t" style="--dy:0em;">오리올</span></span>
       <span class="dot" style="--x:31.4%; --y:58.6%;"><span class="dname l" style="--dy:0em;">낀라오</span></span>
-      <span class="dot" style="--x:49.1%; --y:70.9%;"><span class="dname l" style="--dy:0em;">노가리공장</span></span>
       <span class="dot" style="--x:70.0%; --y:59.2%;"><span class="dname l" style="--dy:0em;">만조</span></span>
 
     </div>

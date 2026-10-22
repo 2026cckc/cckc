@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -181,7 +189,7 @@
 
     <p class="owner" style="margin-top: calc(var(--u) * 1);">차정옥 사장 (상인회 창립 회장)</p>
     <h1 class="name" style="margin-top: calc(var(--u) * 6);">보니스피자펍</h1>
-    <p class="subtitle" style="margin-top: calc(var(--u) * 28);">해방촌의 원조 힙스터</p>
+    <p class="subtitle" style="margin-top: calc(var(--u) * 28);"><span class="hl">해방촌의 원조 힙스터</span></p>
 
     <p class="desc" style="margin-top: calc(var(--u) * 35);">
       두 가지 맛을 한 판에 담은 반반피자의 원조를 자부하며,<br>

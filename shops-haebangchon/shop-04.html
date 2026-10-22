@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -181,7 +189,7 @@
 
     <p class="owner r" style="margin-top: calc(var(--u) * 6);">이진구 셰프 (해방촌 상인회 부회장)</p>
     <h1 class="name r" style="margin-top: calc(var(--u) * 6);">미암미암</h1>
-    <p class="subtitle r" style="margin-top: calc(var(--u) * 35);">프랑스 뒷골목의 낭만</p>
+    <p class="subtitle r" style="margin-top: calc(var(--u) * 35);"><span class="hl">프랑스 뒷골목의 낭만</span></p>
 
     <p class="desc r" style="margin-top: calc(var(--u) * 35);">
       프랑스 소도시 뒷골목의 낭만을 담아,<br>

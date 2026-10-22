@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -181,7 +189,7 @@
 
     <img class="photo" src="shop-03.jpg" alt="치맥라이프 가게 입구의 네온사인과 간판"
          style="width: calc(var(--u) * 743); aspect-ratio: 743 / 498; margin-top: calc(var(--u) * 21);">
-    <p class="subtitle r" style="margin-top: calc(var(--u) * 18);">치킨도, 축구도 진심</p>
+    <p class="subtitle r" style="margin-top: calc(var(--u) * 18);"><span class="hl">치킨도, 축구도 진심</span></p>
 
     <p class="desc r" style="margin-top: calc(var(--u) * 34);">
       직접 개발한 치킨 메뉴와 수제 소스로 자신만의 맛을 완성한,<br>

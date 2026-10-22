@@ -106,8 +106,16 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 27);
+      font-size: calc(var(--u) * 29.7);
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -168,7 +176,7 @@
     </p>
     <p class="owner r" style="margin-top: calc(var(--u) * 228);">하성수 사장 (신흥시장 상인회장)</p>
     <h1 class="name r" style="margin-top: calc(var(--u) * 4);">돈키돈키</h1>
-    <p class="subtitle r" style="margin-top: calc(var(--u) * 41);">오래도록 사랑받는 신흥시장을 위해</p>
+    <p class="subtitle r" style="margin-top: calc(var(--u) * 41);"><span class="hl">오래도록 사랑받는 신흥시장을 위해</span></p>
 
     <p class="desc r" style="margin-top: calc(var(--u) * 43);">
       50여 년 전 건어물·채소 장사로 시작해,<br>

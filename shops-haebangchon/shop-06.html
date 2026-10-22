@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -192,7 +200,7 @@
 
     <p class="owner r" style="margin-top: calc(var(--u) * 112);">차규헌 사장</p>
     <h1 class="name r" style="margin-top: calc(var(--u) * 8);">타코스탠드</h1>
-    <p class="subtitle r" style="margin-top: calc(var(--u) * 54);">해방촌에서 만나는 멕시코</p>
+    <p class="subtitle r" style="margin-top: calc(var(--u) * 54);"><span class="hl">해방촌에서 만나는 멕시코</span></p>
 
     <p class="desc r" style="margin-top: calc(var(--u) * 34);">
       매년 멕시코 곳곳을 여행하며<br>

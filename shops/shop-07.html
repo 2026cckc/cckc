@@ -106,8 +106,16 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 27);
+      font-size: calc(var(--u) * 29.7);
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -163,7 +171,7 @@
 
     <img class="photo" src="shop-07.jpg" alt="해방촌 수제돈까스 매장의 양지연 사장"
          style="width: calc(var(--u) * 797); aspect-ratio: 797 / 529; margin-top: calc(var(--u) * 32);">
-    <p class="subtitle" style="margin-top: calc(var(--u) * 25);">한 접시에 담는 변함없는 정성</p>
+    <p class="subtitle" style="margin-top: calc(var(--u) * 25);"><span class="hl">한 접시에 담는 변함없는 정성</span></p>
 
     <p class="desc" style="margin-top: calc(var(--u) * 43);">
       오랫동안 살아온 동네에서, 가장 자신 있는 돈가스 하나로 시작한 1인 가게.<br>

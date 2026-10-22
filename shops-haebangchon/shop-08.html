@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -179,32 +187,23 @@
     <!-- 누르면 해방촌 지도로 돌아감 -->
     <p class="brand"><a href="../map-haebangchon.html">코카-콜라 X 해방촌</a></p>
 
-    <div class="row" style="margin-top: calc(var(--u) * 27);">
-      <img class="photo" src="shop-08.jpg" alt="피자오 간판과 코카-콜라 간판"
-           style="width: calc(var(--u) * 438); aspect-ratio: 438 / 657;">
-      <div>
-        <p class="subtitle">해방촌에서 나고 자란<br>
-        피자집 사장님</p>
-        <p class="desc" style="margin-top: calc(var(--u) * 36);">
-          도우와 소스를 직접 만들고,<br>
-          원하는 토핑을 자유롭게 골라<br>
-          나만의 피자를 완성하는<br>
-          피자 전문점<br>
-          해방촌에서 나고 자란<br>
-          상인회장이자<br>
-          코카-콜라의 오랜 팬.<br>
-          이번 협업을 누구보다 반기며,<br>
-          자신의 가게를<br>
-          코카-콜라 팝업스토어를<br>
-          연상시키는 공간으로 꾸몄다.
-        </p>
-      </div>
-    </div>
+    <img class="photo" src="shop-08.jpg" alt="코카-콜라 소품으로 꾸민 피자오 매장 내부"
+         style="width: calc(var(--u) * 745); aspect-ratio: 874 / 582; margin-top: calc(var(--u) * 27);">
 
-    <p class="owner r" style="margin-top: calc(var(--u) * 149);">오준석 사장 (해방촌 골목형상점가 상인회장)</p>
+    <p class="subtitle" style="margin-top: calc(var(--u) * 30);"><span class="hl">해방촌에서 나고 자란 피자집 사장님</span></p>
+
+    <p class="desc" style="margin-top: calc(var(--u) * 30);">
+      도우와 소스를 직접 만들고, 원하는 토핑을 자유롭게 골라<br>
+      나만의 피자를 완성하는 피자 전문점.<br>
+      해방촌에서 나고 자란 상인회장이자 코카-콜라의 오랜 팬.<br>
+      이번 협업을 누구보다 반기며, 자신의 가게를<br>
+      코카-콜라 팝업스토어를 연상시키는 공간으로 꾸몄다.
+    </p>
+
+    <p class="owner r" style="margin-top: calc(var(--u) * 110);">오준석 사장 (해방촌 골목형상점가 상인회장)</p>
     <h1 class="name r" style="margin-top: calc(var(--u) * 3);">피자오</h1>
 
-    <p class="quote r" style="margin-top: calc(var(--u) * 67);">
+    <p class="quote r" style="margin-top: calc(var(--u) * 55);">
       “해방촌은 오랜 이웃들이<br>
       함께 만들어온 동네예요.<br>
       이번 코카-콜라와의 협업이<br>

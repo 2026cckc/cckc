@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -184,7 +192,7 @@
 
     <img class="photo" src="shop-09.jpg" alt="레옹 모카 작가의 해방촌 벽화"
          style="width: calc(var(--u) * 682); aspect-ratio: 682 / 546; margin-top: calc(var(--u) * 12);">
-    <p class="subtitle" style="margin-top: calc(var(--u) * 19);">해방촌의 이웃 풍경을 담은 벽화</p>
+    <p class="subtitle" style="margin-top: calc(var(--u) * 19);"><span class="hl">해방촌의 이웃 풍경을 담은 벽화</span></p>
 
     <p class="desc" style="margin-top: calc(var(--u) * 35);">
       해방촌을 꾸준히 작품에 담아온 프랑스 출신 작가가 창문 너머<br>

@@ -122,8 +122,16 @@
 
     .subtitle {
       margin: calc(var(--u) * 40) 0 0;
-      font-size: calc(var(--u) * 27);
+      font-size: calc(var(--u) * 29.7);
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -163,7 +171,7 @@
       <p class="owner">유영섭 사장</p>
       <h1 class="name">팁시타코</h1>
 
-      <p class="subtitle">골목을 밝히는 보틀 네온사인</p>
+      <p class="subtitle"><span class="hl">골목을 밝히는 보틀 네온사인</span></p>
 
       <p class="desc">
         멕시칸의 매력에 한국인의 입맛을 더한 시그니처 타코를<br>

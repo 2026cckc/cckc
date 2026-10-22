@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -181,7 +189,7 @@
 
     <p class="owner" style="margin-top: calc(var(--u) * 6);">나시리 와히드 셰프</p>
     <h1 class="name" style="margin-top: calc(var(--u) * 4);">카사블랑카<small>(+모로코코)</small></h1>
-    <p class="subtitle" style="margin-top: calc(var(--u) * 20);">한 입 가득, 모로코의 맛</p>
+    <p class="subtitle" style="margin-top: calc(var(--u) * 20);"><span class="hl">한 입 가득, 모로코의 맛</span></p>
 
     <p class="desc" style="margin-top: calc(var(--u) * 35);">
       따끈한 바게트에 치킨과 양고기, 채소 등을 푸짐하게 채워<br>

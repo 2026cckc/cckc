@@ -115,9 +115,17 @@
     }
 
     .subtitle {
-      font-size: calc(var(--u) * 23);
+      font-size: calc(var(--u) * 25.3);
       line-height: 1.5;
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -189,7 +197,7 @@
 
     <img class="photo r" src="shop-02.jpg" alt="베제투스 외벽의 초록 네온사인"
          style="width: calc(var(--u) * 677); aspect-ratio: 677 / 364; margin-top: calc(var(--u) * 211);">
-    <p class="subtitle r" style="margin-top: calc(var(--u) * 88);">채식의 즐거운 발견</p>
+    <p class="subtitle r" style="margin-top: calc(var(--u) * 88);"><span class="hl">채식의 즐거운 발견</span></p>
 
     <p class="desc r" style="margin-top: calc(var(--u) * 34);">
       라틴어로 ‘건강하고 활기찬’이라는 이름처럼,<br>

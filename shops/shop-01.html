@@ -93,8 +93,16 @@
 
     .subtitle {
       margin: calc(var(--u) * 40) 0 0;
-      font-size: calc(var(--u) * 27);
+      font-size: calc(var(--u) * 29.7);
       letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    /* 짧은 헤드카피 강조: 연한 빨강 밑줄 */
+    .subtitle .hl {
+      box-shadow: inset 0 -0.45em 0 rgba(225, 4, 27, 0.14);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .desc {
@@ -143,7 +151,7 @@
     <p class="owner">홍석우 사장</p>
     <h1 class="name">H5NG</h1>
 
-    <p class="subtitle">3대가 지켜온 자리에서</p>
+    <p class="subtitle"><span class="hl">3대가 지켜온 자리에서</span></p>
 
     <p class="desc">
       신흥시장에 새로운 감각을 더하는 아메리칸 차이니즈 레스토랑.<br>

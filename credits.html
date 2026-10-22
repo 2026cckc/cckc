@@ -144,6 +144,11 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* 두 번째 링크는 바로 아래에 붙여서 */
+    .back + .back {
+      margin-top: calc(var(--u) * 2);
+    }
+
     .copy {
       margin-top: calc(var(--u) * 22);
       text-align: center;
@@ -188,7 +193,8 @@
       <span class="arrow" aria-hidden="true">↺</span>
     </a>
 
-    <a class="back rise" style="--d:0.4" href="map-haebangchon.html">해방촌 지도로 돌아가기</a>
+    <a class="back rise" style="--d:0.4" href="map-sinheung.html">신흥시장 지도로 돌아가기</a>
+    <a class="back rise" style="--d:0.45" href="map-haebangchon.html">해방촌 지도로 돌아가기</a>
 
     <p class="copy rise" style="--d:0.5">© 2026 The Coca-Cola Company. All rights reserved.</p>
 

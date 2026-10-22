@@ -9,9 +9,9 @@
   // 넘기는 순서 (가게 페이지를 추가하면 여기에 번호를 넣어주세요)
   var ORDER = ["01", "02", "03", "04", "05", "06", "07", "08", "09"];
 
-  // 첫 가게 이전 / 마지막 가게 다음에 갈 페이지 (없으면 null)
+  // 첫 가게 이전 / 마지막 가게(벽화) 다음에 갈 페이지 (없으면 null)
   var BEFORE_FIRST = null;
-  var AFTER_LAST = null;
+  var AFTER_LAST = "../credits.html";
 
   var match = location.pathname.match(/shop-(\d+)\.html/);
   if (!match) return;

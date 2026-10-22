@@ -9,7 +9,7 @@
   <!-- 링크 공유 미리보기 (카톡 등) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="신흥시장에서 해방촌까지 with 코카-콜라">
-  <meta property="og:description" content="신흥시장에서 해방촌까지, 한 골목에서 2년 with 코카-콜라">
+  <meta property="og:description" content="신흥시장에서 해방촌까지 with 코카-콜라">
   <meta property="og:image" content="https://2026cckc.github.io/cckc/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -45,6 +45,7 @@
     }
 
     p,
+    h1,
     dl,
     dt,
     dd {
@@ -70,28 +71,50 @@
 
 
     /* 크레딧 */
-    .credits {
+    /* 가운데 마무리 글 */
+    .closing {
       margin: auto 0;
       padding: calc(var(--u) * 40) 0;
     }
 
+    .end {
+      margin: 0;
+      font-size: calc(var(--u) * 26);
+      font-weight: 900;
+      line-height: 1.35;
+      letter-spacing: -0.05em;
+    }
+
+    .note {
+      margin-top: calc(var(--u) * 18);
+      font-size: calc(var(--u) * 15);
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: -0.03em;
+    }
+
+    /* 크레딧 */
+    .credits {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: calc(var(--u) * 16);
+      row-gap: calc(var(--u) * 10);
+      margin-top: calc(var(--u) * 40);
+      padding-top: calc(var(--u) * 18);
+      border-top: 1px solid rgba(243, 242, 236, 0.4);
+    }
+
     .credits dt {
-      font-size: calc(var(--u) * 13);
-      line-height: 1.4;
+      font-size: calc(var(--u) * 12);
+      line-height: 1.6;
       letter-spacing: -0.02em;
       opacity: 0.7;
     }
 
     .credits dd {
-      margin-top: calc(var(--u) * 6);
-      font-size: calc(var(--u) * 20);
-      font-weight: 800;
-      line-height: 1.4;
-      letter-spacing: -0.04em;
-    }
-
-    .credits dd + dt {
-      margin-top: calc(var(--u) * 26);
+      font-size: calc(var(--u) * 14);
+      line-height: 1.45;
+      letter-spacing: -0.03em;
     }
 
     /* 처음으로 버튼 */
@@ -181,22 +204,35 @@
 <body>
   <main class="page">
 
-    <dl class="credits rise" style="--d:0.1">
-      <dt>주최·주관</dt>
-      <dd>한국 코카-콜라</dd>
-      <dt>협력</dt>
-      <dd>신흥시장 상인회 · 해방촌 상인회</dd>
-    </dl>
+    <div class="closing">
+      <h1 class="end rise" style="--d:0.05">
+        신흥시장에서 해방촌까지,<br>
+        골목의 이야기는 계속됩니다.
+      </h1>
 
-    <a class="home rise" style="--d:0.3" href="index.html">
+      <p class="note rise" style="--d:0.2">
+        코카-콜라와 지역 상인들이<br>
+        함께 만들어갈 다양한 이야기들을<br>
+        앞으로도 기대해 주세요!
+      </p>
+
+      <dl class="credits rise" style="--d:0.35">
+        <dt>주최·주관</dt>
+        <dd>한국 코카-콜라</dd>
+        <dt>협력</dt>
+        <dd>신흥시장 상인회 · 해방촌 상인회</dd>
+      </dl>
+    </div>
+
+    <a class="home rise" style="--d:0.5" href="index.html">
       <span>처음으로</span>
       <span class="arrow" aria-hidden="true">↺</span>
     </a>
 
-    <a class="back rise" style="--d:0.4" href="map-sinheung.html">신흥시장 지도로 돌아가기</a>
-    <a class="back rise" style="--d:0.45" href="map-haebangchon.html">해방촌 지도로 돌아가기</a>
+    <a class="back rise" style="--d:0.6" href="map-sinheung.html">신흥시장 지도로 돌아가기</a>
+    <a class="back rise" style="--d:0.65" href="map-haebangchon.html">해방촌 지도로 돌아가기</a>
 
-    <p class="copy rise" style="--d:0.5">© 2026 The Coca-Cola Company. All rights reserved.</p>
+    <p class="copy rise" style="--d:0.7">© 2026 The Coca-Cola Company. All rights reserved.</p>
 
   </main>
 

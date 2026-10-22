@@ -9,7 +9,7 @@
 */
 (function () {
   // 가게가 총 몇 개인지
-  var TOTAL = 11;
+  var TOTAL = 12;
 
   // 마지막 가게 다음에 갈 페이지 (shops 폴더 기준 주소)
   var AFTER_LAST = "../to-haebangchon.html";
@@ -118,8 +118,8 @@
   // 가게 페이지에서만 보여줌 (연결 페이지 등에서는 안 뜨게)
   if (!/shop-\d+\.html/.test(location.pathname)) return;
 
-  // 마지막 가게(11번)에서는 매번 "한 번 더 넘기면 해방촌으로" 안내
-  var isLast = /shop-11\.html/.test(location.pathname);
+  // 마지막 페이지(12번 스페셜 전시존)에서는 매번 "한 번 더 넘기면 해방촌으로" 안내
+  var isLast = /shop-12\.html/.test(location.pathname);
 
   var seen = false;
   try {
@@ -153,7 +153,7 @@
       "<p><b>↗</b><span>오른쪽 위 글씨를 누르면 지도로 돌아가요</span></p>";
   }
   if (isLast) {
-    html += "<p><b>←</b><span>신흥시장의 마지막 가게예요. 한 번 더 넘기면 해방촌 이야기로 이어져요</span></p>";
+    html += "<p><b>←</b><span>신흥시장의 마지막 이야기예요. 한 번 더 넘기면 해방촌 이야기로 이어져요</span></p>";
   }
   box.innerHTML = html + "<small>눌러서 닫기</small>";
   document.body.appendChild(box);

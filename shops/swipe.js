@@ -114,6 +114,10 @@
 */
 (function () {
   var KEY = "cckc-shop-guide-seen";
+
+  // 가게 페이지에서만 보여줌 (연결 페이지 등에서는 안 뜨게)
+  if (!/shop-\d+\.html/.test(location.pathname)) return;
+
   try {
     if (localStorage.getItem(KEY)) return;
   } catch (e) {}

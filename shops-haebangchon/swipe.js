@@ -7,7 +7,7 @@
 */
 (function () {
   // 넘기는 순서 (가게 페이지를 추가하면 여기에 번호를 넣어주세요)
-  var ORDER = ["01", "02", "04", "05", "09", "10", "12", "13", "14"];
+  var ORDER = ["01", "02", "03", "04", "05", "06", "07", "08", "09"];
 
   // 첫 가게 이전 / 마지막 가게 다음에 갈 페이지 (없으면 null)
   var BEFORE_FIRST = null;
@@ -104,6 +104,10 @@
 */
 (function () {
   var KEY = "cckc-shop-guide-seen";
+
+  // 가게 페이지에서만 보여줌 (연결 페이지 등에서는 안 뜨게)
+  if (!/shop-\d+\.html/.test(location.pathname)) return;
+
   try {
     if (localStorage.getItem(KEY)) return;
   } catch (e) {}
